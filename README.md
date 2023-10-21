@@ -1,7 +1,9 @@
 # referenceLanguageCorpora
 
-This repository contains grammars and test strings for use with software tools from the Royal Holloway Centre for Software Language Engineering
+This repository contains programming language grammars and program examples.
+
+
 
 See also
 
->  [Our reference GLL implemetations]https://github.com/AJohnstone2007/referenceImplementation
+>  [Our reference GLL implemetations](https://github.com/AJohnstone2007/referenceImplementation)
