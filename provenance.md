@@ -1,4 +1,4 @@
-#Notes on the creation of the corpora
+# Notes on the creation of the corpora
 
 rhulTests is our standard set of example programs as used in various papers
 
@@ -16,11 +16,11 @@ ml-works collected from https://github.com/Ravenbrook/mlworks 5 July 2022 15.30 
 
 ## Summary file counts after flattening
 
-Github		Directory	In zip		After flat copy		(lost)	[proportion]
-download			Files		Files	Bytes				
-
-jfx-master	jfxSource	 4 877		4 588	43 568 050 	 (289)	[-5.9%]	
-mlWorks-master	mlwSource	 1 984		1 798	13 188 297	 (186)	[-9.4%]
+Github		|Directory	|In zip		|After flat copy	|(lost)	|[proportion]
+download	|		|Files		|Files	|Bytes		|	|	
+---		|---		|---		|---	|---		|---	|---
+jfx-master	|jfxSource	|4 877		|4 588	|43 568 050 	 |(289)	|[-5.9%]	
+mlWorks-master	|mlwSource	|1 984		|1 798	|13 188 297	 |(186)	|[-9.4%]
 
 ## Java corpus: compressing comments and spaces
 
