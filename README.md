@@ -4,7 +4,7 @@ This repository contains programming language grammars and program examples.
 
 
 
-See also
+You may also find the following pages useful.
 
 Our reference GLL implementations at https://github.com/AJohnstone2007/referenceImplementation
 
