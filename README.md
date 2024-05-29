@@ -1,5 +1,7 @@
 # referenceLanguageCorpora
 
+# As of 29 May 2024, this repo is frozen; the work has been embedded in the main ART repo at [https://github.com/AJohnstone2007/ART](https://github.com/AJohnstone2007/ART)
+
 This repository contains programming language grammars and program examples.
 
 The collection is curated by Adrian Johnstone and Elizabeth Scott of the Centre for Software Language Engineering at Royal Holloway, University of London.
