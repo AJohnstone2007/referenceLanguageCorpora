@@ -2,7 +2,7 @@
 
 This repository contains programming language grammars and example programs in those languages.
 
-See https://github.com/AJohnstone2007/referenceLanguageCorpora/blob/main/provenance.md for details on how this corpora were constructed.
+See https://github.com/AJohnstone2007/referenceLanguageCorpora/blob/main/provenance.md for details on how these corpora were constructed.
 
 The collection is curated by Adrian Johnstone and Elizabeth Scott of the Centre for Software Language Engineering at Royal Holloway, University of London.
 
