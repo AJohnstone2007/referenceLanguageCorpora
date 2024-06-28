@@ -1,7 +1,5 @@
 # Notes on the creation of the corpora
 
-rhulTests is our standard set of example programs as used in various papers
-
 ## Origin of source files
 
 jfx-master collected from https://github.com/openjdk/jfx 5 July 2022 15.15 BST
