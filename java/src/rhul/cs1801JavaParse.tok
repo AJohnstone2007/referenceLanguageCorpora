@@ -1,0 +1,740 @@
+import ID.ID.ID;
+import ID.ID.ID;
+import ID.ID.ID;
+import ID.ID.ID;
+import ID.ID.ID;
+import ID.ID.*;
+import ID.ID.*;
+import ID.ID.ID.*;
+import ID.ID.*;
+import ID.ID.ID.*;
+import ID.ID.ID;
+
+
+
+class ID {
+    public static void ID( )
+     {
+       int ID = INTEGER - - INTEGER ;
+       ID.ID.ID(ID);
+  }
+}
+
+public class ID {
+	public static ID ID(ID ID){
+		int ID = ID.ID(STRING_DQ);
+		ID ID = ID.ID(ID+INTEGER);
+		ID = ID.ID(STRING_DQ);
+		ID ID = ID.ID(INTEGER, ID);
+		return ID;
+	}
+	
+	private static ID ID (ID ID) throws ID {
+		ID ID = new ID(STRING_DQ+ID);
+		ID ID = ID.ID();
+		ID ID = 
+		      new ID(
+                          new ID(ID.ID()));	
+		ID ID;
+		ID ID = new ID();
+		while ((ID = ID.ID()) != null) {
+			ID.ID(ID);
+		}
+		ID.ID();
+		return ID.ID();
+	}
+	
+	public static void ID(ID[] ID) throws ID {
+	    ID ID = new ID(ID.ID);
+		ID.ID.ID(STRING_DQ);
+		ID.ID.ID(STRING_DQ);
+
+		ID ID = ID(STRING_DQ);
+		ID ID = ID(ID);
+		ID.ID.ID(ID);
+
+		ID.ID.ID(STRING_DQ);
+		ID.ID.ID(STRING_DQ);
+
+	  int ID = ID.ID();
+          while (ID != -INTEGER) {
+	     if ((ID < INTEGER) || (ID > INTEGER)){
+       	 ID.ID.ID(STRING_DQ); }
+	     else { 
+                 if (ID == INTEGER) {
+		    ID = ID(STRING_DQ);
+		    ID = ID(ID);
+		    ID.ID.ID(ID); }
+                 else {
+                    ID = ID(STRING_DQ);
+                    ID = ID(ID);
+		    ID.ID.ID(ID); } } ;
+             ID.ID.ID(STRING_DQ);
+	     ID.ID.ID(STRING_DQ);
+	     ID = ID.ID(); } ;
+	   int ID = ID(); 
+           ID.ID.ID(STRING_DQ + ID); 
+    ID.ID() ;
+    ID.ID() ;
+    ID.ID();  }
+}
+
+class ID
+{
+  public static void ID()
+  {
+    ID ID = new ID(ID.ID);
+    double ID, ID, ID;
+
+    ID.ID.ID(STRING_DQ);
+    ID = ID.ID();
+    ID.ID.ID(STRING_DQ);
+    ID = ID.ID();
+    ID = ID + ID;
+    ID.ID.ID(STRING_DQ + ID);
+  }
+}
+
+class ID
+{
+public static void ID()
+    {
+	ID ID = new ID(ID.ID);
+
+	int ID;
+	double ID = REAL, ID = INTEGER, ID = INTEGER, 
+           ID = INTEGER, ID = INTEGER;
+	double ID=INTEGER, ID=INTEGER, ID=INTEGER, ID=INTEGER, ID, ID=INTEGER;
+	int  ID;
+
+
+	for(int ID=INTEGER; ID<INTEGER; ID++) {
+	  if (ID>INTEGER) 
+            ID.ID.ID(STRING_DQ + ID + STRING_DQ + ID);
+  	  ID.ID.ID(STRING_DQ + ID + STRING_DQ);
+ 	  ID = ID.ID();
+
+          ID = ID - ID + ID*ID - ID;
+  	  ID = ID * ID;
+
+          ID = ID*ID;
+	  ID  = ID*ID - ID - ID;
+	  ID = ID - ID;
+	  ID += ID; 
+
+	  if (ID < INTEGER) { ID = REAL; }
+	  else { ID = REAL; }
+	}
+
+	ID.ID.ID(STRING_DQ + ID);
+    }
+}
+
+
+class ID{
+
+static int ID( ) {
+    int ID = INTEGER,ID, ID=-INTEGER;
+    ID ID = new ID(ID.ID);
+    while (ID==INTEGER) {
+      ID.ID.ID(STRING_DQ);
+      ID = ID.ID();
+
+      if ( ID>=INTEGER && ID<=INTEGER) {
+	 if(ID%INTEGER==INTEGER) { ID= ID/INTEGER; }
+         else { if (ID%INTEGER==INTEGER) { ID= (ID-INTEGER)/INTEGER; }
+	        else { ID= (ID+INTEGER)/INTEGER; } 
+              } 
+       }
+      else { if ( ID<=-INTEGER && ID >= -INTEGER) { ID= -ID; }
+             else  ID.ID.ID(STRING_DQ);
+      } 
+      ID.ID.ID(STRING_DQ); 
+      ID = ID.ID(); }
+    return ID;
+}
+}
+
+class ID{ 
+ public static void ID() {
+   int[] ID = new int[INTEGER];
+   for ( int ID = INTEGER; ID < INTEGER; ID++ ) {ID[ID] = INTEGER;};
+   ID ID = new ID(ID.ID);
+   ID.ID.ID(STRING_DQ);
+   int ID = ID.ID();    
+   while ( ID>=INTEGER && ID<INTEGER) {
+        ID[ID] = INTEGER; 
+        ID.ID.ID(STRING_DQ);
+        ID = ID.ID(); }; 
+   for ( int ID = INTEGER; ID < INTEGER; ID++ ) { ID.ID.ID(ID[ID]); } } }
+
+
+class ID{ 
+ public static void ID() {
+     int ID = INTEGER, ID = INTEGER;
+     while ( ID>=INTEGER ){ 
+          ID+=INTEGER; ID-=INTEGER; 
+          ID.ID.ID(STRING_DQ + ID); };
+     ID.ID.ID(STRING_DQ + ID); } }
+
+
+public class ID extends ID {
+    public enum ID { ID, ID, ID, ID, ID } ;
+    private ID ID;
+    ID(ID ID, int ID, ID ID, ID ID) {
+        super(ID, ID, ID, INTEGER); 
+        ID = ID; }
+    public void ID(ID ID) { ID = ID; }
+    public void ID(int ID) {
+         ID.ID.ID(STRING_DQ); }
+    public ID ID(){ return this.ID; }  }
+
+
+public class ID
+{
+public enum ID {
+ID,
+ID,
+ID,
+ID,
+ID,
+ID,
+ID  } ;
+
+private ID ID;
+private int ID;
+private ID ID;
+private int ID;
+
+ID(ID ID, int ID, ID ID, int ID) {
+    ID = ID;
+    ID = ID;
+    ID = ID;
+    ID = ID; }
+
+public void ID(ID ID) { ID = ID; }
+
+public void ID(int ID) { ID = ID; }
+
+public void ID(ID ID) { ID = ID; }
+
+public void ID(int ID) { ID = ID; }
+
+public ID ID(){ return ID; }
+
+public int ID(){ return ID; }
+
+public ID ID(){ return ID; }
+
+public int ID(){ return ID; }
+}
+
+
+
+class ID {
+    ID ID;
+    int ID;
+    ID(ID ID, int ID) { ID = ID; ID = ID; }
+    public ID ID(){ return ID; }
+    public int ID() { return ID; }
+    public ID ID() { return  ID + STRING_DQ + ID ; } }
+
+
+class ID {
+  public static void ID() { 
+    ID ID = new ID(STRING_DQ, INTEGER);
+    ID.ID.ID.ID(null, ID.ID()); } }
+
+public class ID{
+    double ID, ID;
+    ID(double ID, double ID) { ID = ID; ID = ID; }
+    public static void ID(ID ID, ID ID, double[] ID) {
+        if(ID.ID != ID.ID) {
+            ID[INTEGER] = (ID.ID - ID.ID)/(ID.ID-ID.ID);
+            ID[INTEGER] = ID.ID - ID[INTEGER]*ID.ID; }
+        else {
+            ID[INTEGER] = ID.ID;
+            ID[INTEGER] = ID.ID; }; } }
+
+class ID
+{
+    public static void ID()
+    {
+      ID ID = new ID(ID.ID);
+      ID ID, ID;
+      double[] ID = new double[INTEGER];
+      double[] ID = new double[INTEGER];
+
+      ID.ID.ID(STRING_DQ);
+      ID[INTEGER] = ID.ID();
+      ID[INTEGER] = ID.ID();
+
+      ID = new ID(ID[INTEGER], ID[INTEGER]);
+
+      ID.ID.ID(STRING_DQ);
+      ID[INTEGER] = ID.ID();
+      ID[INTEGER] = ID.ID();
+
+      ID = new ID(ID[INTEGER], ID[INTEGER]);
+
+      ID.ID(ID,ID,ID);
+
+      if(ID[INTEGER]!=ID.ID)    
+        ID.ID.ID(STRING_DQ +
+		       ID[INTEGER]+STRING_DQ+ID[INTEGER]);
+      else
+        ID.ID.ID(STRING_DQ + ID[INTEGER]);
+    }
+}
+
+class ID{
+  private double ID, ID;
+  private ID ID;
+
+  ID(double ID, double ID, ID ID)
+  { ID= ID; ID= ID; ID = ID; }
+
+  ID(double ID, double ID)
+  { ID= ID; ID= ID; ID = STRING_DQ;}
+
+  public void ID(double ID, double ID) { ID = ID; ID = ID; }
+  public void ID(double ID, double ID, ID ID) 
+  { ID = ID; ID = ID; ID = ID;}
+  public double ID() { return ID; }
+  public double ID() { return ID; }
+  public ID ID() { return ID; }
+
+  public ID ID() 
+    { return STRING_DQ + ID + STRING_DQ + ID + STRING_DQ + ID + STRING_DQ; }
+}
+
+class ID{
+    protected ID[] ID;
+    protected int ID;
+    protected int ID = INTEGER;
+
+    ID(int ID) 
+    {
+      ID = new ID[ID]; ID = ID; 
+
+	for (int ID = INTEGER; ID < ID; ID++)
+	    ID[ID] = new ID(INTEGER,INTEGER, STRING_DQ);
+    }
+
+    void ID(double ID, double ID)
+    { ID[ID++].ID(ID, ID); }
+
+    void ID(double ID, double ID, ID ID)
+    { ID[ID++].ID(ID, ID, ID); }
+
+    ID ID(int ID)
+    { return ID[ID]; }
+
+    int ID() { return ID; }
+}
+
+class ID extends ID {
+    double ID, ID, ID, ID;
+
+    ID(int ID, double ID, double ID, double ID, double ID) 
+    {
+	super(ID);
+	ID = ID;
+	ID = ID;
+	ID = ID;
+	ID = ID;
+
+    }
+
+    public void ID(double ID, double ID) {
+	if (ID < ID ) {
+	    ID.ID.ID(STRING_DQ + ID);
+	    ID = ID; }
+	else if (ID > ID ) {
+	    ID.ID.ID(STRING_DQ + ID);
+	    ID = ID; };
+	if (ID < ID ) {
+	    ID.ID.ID(STRING_DQ + ID);
+	    ID = ID; }
+	else if (ID > ID ) {
+	    ID.ID.ID(STRING_DQ + ID);
+	    ID = ID; };
+	 super.ID(ID, ID);
+	};
+
+    public void ID(double ID, double ID, ID ID) {
+	if (ID < ID ) {
+	    ID.ID.ID(STRING_DQ + ID);
+	    ID = ID; }
+	else if (ID > ID ) {
+	    ID.ID.ID(STRING_DQ + ID);
+	    ID = ID; };
+	if (ID < ID ) {
+	    ID.ID.ID(STRING_DQ + ID);
+	    ID = ID; }
+	else if (ID > ID ) {
+	    ID.ID.ID(STRING_DQ + ID);
+	    ID = ID; };
+	super.ID(ID, ID, ID);
+	};
+}
+
+class ID {
+    public static void ID() {
+      ID ID = new
+	  ID(INTEGER, REAL, REAL, REAL, INTEGER);
+      ID.ID(INTEGER,INTEGER,STRING_DQ);
+      ID.ID(INTEGER,-INTEGER,STRING_DQ);
+      ID.ID(REAL,INTEGER);
+      ID.ID(INTEGER,INTEGER,STRING_DQ); } }
+
+class ID{
+    private ID ID;
+    private ID ID;
+
+    ID(ID ID, ID ID) {
+	this.ID = ID; this.ID = ID; }
+    ID ID() { return ID; }
+    ID ID() { return ID; }
+    void ID() { this.ID = ID;} }
+
+class ID {
+    public static void ID(ID[] ID) {
+	ID ID ; 
+	ID = new ID(REAL, null);
+        ID = new ID(REAL, ID);  
+        ID = new ID(REAL, ID);  
+        ID = new ID(-REAL, ID);  
+        ID = new ID(REAL, ID);  
+
+        ID ID = ID;
+        while ( ID != null) {
+	    ID.ID.ID(ID.ID());
+	    ID = ID.ID(); }; } }
+ 
+class ID
+{
+  private ID ID;
+  private ID ID;
+  private ID ID;
+
+  ID (ID ID) { this.ID = ID; }
+
+  ID ID() { return ID; }
+  ID ID() { return ID; }
+  ID ID() { return ID; }
+
+  ID ID(ID ID) { 
+                return ID = new ID(ID); }
+  ID ID(ID ID) { 
+                return ID = new ID(ID); }
+
+  void ID()
+    {
+      if (ID != null) ID.ID();
+      ID.ID.ID(ID);
+      if (ID != null) ID.ID();
+    }
+
+  void ID()
+    {
+      ID.ID.ID(ID);
+      if (ID != null) ID.ID();
+      if (ID != null) ID.ID();
+    }
+
+  void ID()
+    {
+      if (ID != null) ID.ID();
+      if (ID != null) ID.ID();
+      ID.ID.ID(ID);
+    }
+}
+
+class ID
+{
+  public static void ID()
+  {
+    ID ID = new ID(STRING_DQ), ID = ID;
+
+    ID = ID.ID(STRING_DQ);
+    ID.ID(STRING_DQ);
+    ID = ID.ID(STRING_DQ);
+    ID.ID(STRING_DQ);
+    ID.ID(STRING_DQ);
+
+    ID.ID.ID(STRING_DQ);
+    ID.ID();
+    ID.ID.ID(STRING_DQ);
+    ID.ID();
+    ID.ID.ID(STRING_DQ);
+    ID.ID();
+  }
+}
+
+class ID
+{
+  protected ID ID;  
+  protected ID ID;
+
+  ID(ID ID, ID ID)
+  {
+    this.ID = ID;
+    this.ID = ID;
+  }
+
+  ID ID() { return ID; }
+  ID ID() { return ID; }
+
+  public ID ID() {return (ID) ID; }   
+    
+  void ID()
+  {
+    ID.ID.ID(this); 
+    if (ID != null)
+      ID.ID();
+  }
+
+  void ID()
+  {
+    if (ID != null)
+      ID.ID();
+    ID.ID.ID(this);
+  }
+
+  void ID(ID ID)
+  {
+    if (ID.ID(ID))
+      ID.ID.ID(STRING_DQ);
+    else 
+    {
+      if (ID != null)
+        ID.ID(ID);
+      else
+	ID.ID.ID(STRING_DQ);
+    }
+  }
+}
+
+class ID extends ID
+{
+  static int ID = INTEGER;   
+  int ID;             
+
+  ID(ID ID, ID ID)
+  { 
+    super(ID, ID); 
+    ID = ID++; 
+  }
+
+  public ID ID() {return (ID) ID + STRING_DQ + ID; }
+}
+
+class ID
+{
+  static ID ID(ID ID, ID ID)
+  {
+      ID.ID.ID(ID);
+      return ID.ID();
+  }
+
+  public static void ID()
+  {
+    ID ID = new ID(ID.ID);
+
+    ID ID = null;
+
+    ID.ID.ID(STRING_DQ);
+
+    while (true)
+    {
+      ID ID = ID(ID, STRING_DQ);
+
+      if (ID.ID(STRING_DQ))
+        break;
+
+      ID = new ID(ID, ID);
+    }
+
+    ID.ID.ID(STRING_DQ);
+    ID.ID();
+
+    ID.ID.ID(STRING_DQ);
+    ID.ID();
+
+    ID.ID.ID(STRING_DQ);
+    ID.ID(STRING_DQ);
+  }
+}
+
+public class ID {
+    public static void ID() throws ID{
+	ID ID = new ID(STRING_DQ);
+	ID ID = new ID(ID);
+	int ID = INTEGER, ID = INTEGER, ID = INTEGER, ID = INTEGER;
+	while (ID.ID()) {
+	    ID++;
+	    if(ID.ID()) {
+		ID++; ID.ID(); }
+	    else if(ID.ID()) {
+		ID++; ID.ID(); }
+	    else {
+		ID++; ID.ID(); }
+	}
+	ID.ID.ID(STRING_DQ, ID);
+	ID.ID.ID(STRING_DQ, ID);
+	ID.ID.ID(STRING_DQ, ID);
+	ID.ID.ID(STRING_DQ, ID);
+    }
+}
+
+class ID
+{
+  int[][] ID;
+
+  ID(int ID, int ID) {ID = new int[ID][ID];}
+
+  public int ID() {return ID[INTEGER].ID; }
+  public int ID() {return ID.ID; }
+  public int ID(int ID, int ID) {return ID[ID][ID];}
+  public void ID(int ID, int ID, int ID) {ID[ID][ID] = ID;}
+}
+
+class ID
+{
+  public static void ID() throws ID, ID
+  {
+    int ID = INTEGER, ID = INTEGER, ID = INTEGER;
+    ID ID = STRING_DQ;
+
+    if(ID.ID>INTEGER) {
+	for(int ID=INTEGER; ID<ID.ID; ID++) {
+            if(ID[ID].ID(STRING_DQ)) {ID++; ID=ID.ID(ID[ID]); }
+	    else if(ID[ID].ID(STRING_DQ)){ ID++; ID=ID.ID(ID[ID]); }
+		 else ID = ID[ID]; } }
+                      
+
+    ID ID = new ID(ID, ID);
+    ID ID = new ID();
+    ID ID = new ID(ID, ID);
+    ID ID = new ID(ID);
+
+
+
+    ID ID = new ID(STRING_DQ);
+    ID.ID(new ID(ID, ID));
+
+    ID ID = new ID(STRING_DQ);
+    ID.ID(new ID(ID, ID,ID));
+    ID.ID(ID, ID.ID);
+    ID.ID(ID, ID.ID);
+    ID.ID(ID, ID.ID);
+    ID.ID();
+  }
+}
+
+class ID implements ID
+{
+  ID ID;
+  ID ID;
+
+  ID(ID ID, ID ID)
+  { this.ID = ID; this.ID = ID; }
+  
+  public void ID(ID ID)
+  {  
+    for (int ID = INTEGER; ID < ID.ID(); ID++)
+      for (int ID = INTEGER; ID < ID.ID(); ID++)
+        ID.ID(ID, ID, INTEGER);    
+    ID.ID();
+  }
+}
+
+class ID implements ID
+{
+  ID ID;
+  ID ID;
+  ID ID;
+
+  ID(ID ID, ID ID, ID ID)
+  { this.ID = ID; this.ID = ID; this.ID = ID;}
+  
+  public void ID(ID ID)
+  {  
+      for (int ID = INTEGER; ID<ID.ID() ; ID++) {
+	  for (int ID = INTEGER; ID<ID.ID() ; ID++) {
+	      if(ID.ID(ID,ID) == INTEGER ) ID.ID.ID(STRING_DQ);
+	      else ID.ID.ID(STRING_DQ); }
+	   ID.ID.ID(STRING_DQ); }
+    ID.ID();
+  }
+
+  public void ID(ID ID)
+  {  
+      for (int ID = INTEGER; ID<ID.ID() ; ID++) {
+	  for (int ID = INTEGER; ID<ID.ID() ; ID++) {
+	      if(ID.ID(ID,ID) == INTEGER ) ID.ID(STRING_DQ);
+	      else ID.ID(STRING_DQ); }
+	   ID.ID(STRING_DQ); }
+    ID.ID();
+    ID.ID();
+  }
+}
+
+class ID extends ID
+{
+  ID() 
+  {
+    ID(STRING_DQ);
+    ID(ID.ID);
+    ID(true);
+  }
+}
+
+class ID extends ID implements ID
+{
+  private ID ID;
+  private int ID;
+    private ID ID[] = {ID.ID, ID.ID, ID.ID, ID.ID, 
+                                     ID.ID, ID.ID, ID.ID};
+
+  ID(ID ID, int ID) 
+  {
+    this.ID = ID; this.ID = ID;
+
+    ID(new ID(ID.ID() * ID, ID.ID() * ID));
+    ID(this);
+    ID(this);
+  }
+
+  protected void ID(ID ID) 
+  {
+    super.ID(ID);
+
+    for (int ID = INTEGER; ID < ID.ID(); ID++)
+      for (int ID = INTEGER; ID < ID.ID(); ID++)
+      {
+        ID.ID(ID[ID.ID(ID,ID) % ID.ID]);
+        ID.ID(ID * ID,ID * ID, ID, ID);
+      }
+  }
+
+  public void ID(ID ID) {}
+  public void ID(ID ID) {}
+  public void ID(ID ID) {}
+  public void ID(ID ID) 
+  {
+    int ID = ID.ID(), ID = ID.ID();
+
+    ID.ID.ID(STRING_DQ + ID + STRING_DQ + ID + STRING_DQ);
+
+    ID /= ID; ID /= ID;
+
+    ID.ID(ID, ID, (ID.ID(ID,ID)+INTEGER)%INTEGER);
+
+    this.ID();
+  }
+  public void ID(ID ID) {}
+  public void ID(ID ID) {}
+  public void ID(ID ID) {}
+}
