@@ -1,0 +1,70 @@
+#!/bin/sh
+#
+# Weekly benchmarks script wrapper.
+#
+# This runs the weekly benchmark script, redirecting the output to
+# weekly-log, and mailing the mlworkers if it fails.  This is the
+# script that is actually run from the crontab.
+#
+# Copyright 2013 Ravenbrook Limited <http://www.ravenbrook.com/>.
+# All rights reserved.
+# 
+# Redistribution and use in source and binary forms, with or without
+# modification, are permitted provided that the following conditions are
+# met:
+# 
+# 1. Redistributions of source code must retain the above copyright
+#    notice, this list of conditions and the following disclaimer.
+# 
+# 2. Redistributions in binary form must reproduce the above copyright
+#    notice, this list of conditions and the following disclaimer in the
+#    documentation and/or other materials provided with the distribution.
+# 
+# THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS
+# IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED
+# TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A
+# PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT
+# HOLDER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL,
+# SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED
+# TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR
+# PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF
+# LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING
+# NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
+# SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+#
+# $Log: weekly-wrapper,v $
+# Revision 1.1  1998/02/02 14:11:06  jkbrook
+# new unit
+# [Bug #20104]
+# Wrapper script for weekly benchmark collection
+#
+#
+
+umask 002
+TERM=xterm; export TERM
+
+SML=/u/sml/MLW; export SML
+
+PATH=/usr/local/bin:/usr/ucb:.:/bin:$PATH; export PATH
+(echo "Checking out weekly benchmark script";
+ hope co -com MLWtools -writable-files skip weekly;
+ $SML/tools/weekly) > $SML/tools/weekly-log 2>&1 ||
+{
+  status=$?
+  {
+    echo "From: Weekly benchmarks script wrapper <sml>"
+    echo "To: mlworkers"
+    echo "Subject: The weekly benchmarks failed on: " `hostname`
+    echo
+    echo "The weekly benchmarks failed with exit code $status.  The end of the "
+    echo "log reads:"
+    echo
+    tail $SML/tools/weekly-log | sed -e 's/^/> /'
+    echo
+    echo "The lines of the log written directly by the weekly script read:"
+    echo
+    sed -n -e "s/^weekly: /> /p" < $SML/tools/weekly-log
+  } |
+  /usr/lib/sendmail -t
+}
+exit 0

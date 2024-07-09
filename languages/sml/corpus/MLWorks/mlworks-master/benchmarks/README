@@ -1,0 +1,108 @@
+# $Log: README,v $
+# Revision 1.1  1997/01/29 14:16:38  matthew
+# new unit
+# New unit
+#
+#
+# Copyright 2013 Ravenbrook Limited <http://www.ravenbrook.com/>.
+# All rights reserved.
+# 
+# Redistribution and use in source and binary forms, with or without
+# modification, are permitted provided that the following conditions are
+# met:
+# 
+# 1. Redistributions of source code must retain the above copyright
+#    notice, this list of conditions and the following disclaimer.
+# 
+# 2. Redistributions in binary form must reproduce the above copyright
+#    notice, this list of conditions and the following disclaimer in the
+#    documentation and/or other materials provided with the distribution.
+# 
+# THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS
+# IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED
+# TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A
+# PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT
+# HOLDER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL,
+# SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED
+# TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR
+# PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF
+# LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING
+# NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
+# SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+#
+
+This directory contains a set of benchmarks for testing optimizations
+etc. in MLWorks.
+
+To run the benchmarks
+---------------------
+
+Use:
+
+RUN_BENCHMARK -src <source dir> -dir <architecture/OS> [-not-silent] [-new] [-results <results file>] <filenames>
+
+or:
+
+RUN_BENCHMARK_ALL -src <source dir> -dir <architecture/OS> [-not-silent] [-new] [-results <results file>]
+
+The -src and -dir parameters are the same as for the test suite
+scripts -- a source directory and an ARCH/OS directory to use.  These
+parameters are compulsory.
+
+The benchmarks (the named files or all in the directory) are run and
+the results get appended to the results file, which is initially
+cleared if the -new flag is given.  If no explicit results file is
+given, then the (compulsory) -dir option is used to find a
+subdirectory to put the results in.  The subdirectory is created if
+necessary.  The default name of the results file is the current date
+yymmdd).
+
+If the benchmarks are being run for the purposes of testing a
+particular benchmark, then the results file should be edited to
+include this information and the results preserved by adding the
+results file as a new hope unit.
+
+To add a benchmark
+------------------
+
+Add a top level file to the benchmarks directory.  If the benchmark
+file is being added to act as a test for a particular optimization,
+then this fact should be fully commented.  The benchmark file is
+loaded using "use", so don't use any requires.  The code for running
+the benchmarks and writing the results is utils/benchmark so use this
+file somewhere.  This defines the benchmark function:
+
+test : string -> int -> ('a -> 'b) -> 'a -> 'b
+
+where "test s n f x" applies f to x n times and writes a message to
+the results file with s as the name of the benchmark.
+
+test may be called as many times as you like in the file of course.
+
+Any other files used by the test should be placed in an appropriately
+named subdirectory (see, for example, the ray tracing test).
+
+The utils directory contains useful files that are not themselves
+benchmarks.  Currently it contains the benchmarking code itself and a
+prelude file for the TIL benchmarks.
+
+Current contents of the benchmark directory
+-------------------------------------------
+
+tak.sml: The usual tak function (Harlequin)
+ctak.sml: Tak written in curried from (Harlequin)
+life.sml: Conway's game of life (TIL)
+ray.sml: A ray tracing application (Walton)
+sorts.sml: Some sorting functions (Harlequin)
+boyer.sml: A Boyer Moore theorem prover (INRIA)
+fft.sml: Fast fourier transform (INRIA)
+knuth-bendix.sml: The Knuth Bendix algorithm (INRIA)
+matmult.sml: 2d matrix multiply (TIL)
+simple.sml: Numeric simulation (TIL)
+
+Sources are:
+
+Harlequin:  code written at Harlequin 
+TIL:  The TIL group (contact jgm@cs.cornell.edu (Greg Morrisett))
+INRIA: The CAML group at INRIA (contact Xavier.Leroy@inria.fr)
+Walton: Chris Walton (chrisw@epcc.ed.ac.uk)

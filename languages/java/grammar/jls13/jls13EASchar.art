@@ -1,0 +1,1008 @@
+start  CompilationUnit 
+
+WS ::= &WHITESPACE | #
+
+AnnotationIt ::= Annotation AnnotationIt | #
+Iter1 ::= AnnotationIt  `[ WS `] WS Iter1 | # 
+TypeParameterModifierIt ::= TypeParameterModifier TypeParameterModifierIt | #
+Iter2 ::= `, WS TypeArgument Iter2 | #
+ImportDeclarationIt ::= ImportDeclaration ImportDeclarationIt | #
+TypeDeclarationIt ::= TypeDeclaration TypeDeclarationIt | #
+PackageModifierIt ::= PackageModifier PackageModifierIt | #
+Iter3 ::=   `. WS Identifier Iter3 | #
+ModuleDirectiveIt ::= ModuleDirective ModuleDirectiveIt | #
+RequiresModifierIt ::= RequiresModifier RequiresModifierIt | #
+Iter4 ::= `, WS ModuleName Iter4 | #
+Iter5 ::= `, WS TypeName Iter5 | #
+ClassModifierIt ::= ClassModifier ClassModifierIt | #
+Iter6 ::= `, WS TypeParameter Iter6 | #
+Iter7 ::=   `, WS InterfaceType Iter7 | #
+ClassBodyDeclarationIt ::= ClassBodyDeclaration ClassBodyDeclarationIt | #
+FieldModifierIt ::= FieldModifier FieldModifierIt | #
+Iter8 ::= `, WS VariableDeclarator Iter8 | #
+MethodModifierIt ::= MethodModifier MethodModifierIt | #
+Iter9 ::= `, WS FormalParameter Iter9 | #
+VariableModifierIt ::= VariableModifier VariableModifierIt | #
+Iter10 ::=  `, WS ExceptionType Iter10 | #
+Iter11 ::=  `, WS EnumConstant Iter11 | #
+EnumConstantModifierIt ::= EnumConstantModifier EnumConstantModifierIt | #
+InterfaceModifierIt ::= InterfaceModifier InterfaceModifierIt | #
+InterfaceMemberDeclarationIt ::= InterfaceMemberDeclaration InterfaceMemberDeclarationIt | #
+ConstantModifierIt ::= ConstantModifier ConstantModifierIt | #
+InterfaceMethodModifierIt ::= InterfaceMethodModifier InterfaceMethodModifierIt | #
+AnnotationTypeMemberDeclarationIt ::= AnnotationTypeMemberDeclaration
+AnnotationTypeMemberDeclarationIt | #
+AnnotationTypeElementModifierIt ::= AnnotationTypeElementModifier AnnotationTypeElementModifierIt | #
+Iter12 ::= `, WS ElementValuePair Iter12 | #
+Iter13 ::= `, WS ElementValue Iter13 | #
+Iter14 ::= `, WS VariableInitializer Iter14 | #
+BlockStatementIt ::= BlockStatement BlockStatementIt | #
+SwitchBlockStatementGroupIt ::= SwitchBlockStatementGroup SwitchBlockStatementGroupIt | #
+SwitchLabelIt ::= SwitchLabel SwitchLabelIt | #
+Iter15 ::= `, WS StatementExpression Iter15 | #
+CatchClauseIt ::= CatchClause CatchClauseIt | #
+Iter16 ::= `| WS  ClassType Iter16 | #
+Iter17 ::= `; WS Resource Iter17 | #
+Iter18 ::= `[ WS `] WS Iter18 | #
+Iter19 ::= `. WS AnnotationIt  Identifier Iter19 | #
+Iter20 ::= `, WS Expression Iter20 | #
+DimExprIt ::= DimExpr DimExprIt | #
+Iter21 ::= `, WS LambdaParameter Iter21 | #
+AdditionalBoundIt ::= AdditionalBound AdditionalBoundIt | #
+ConstructorModifierIt ::= ConstructorModifier ConstructorModifierIt | #
+
+TypeArgumentsOpt ::= TypeArguments | #
+ArgumentListOpt ::= ArgumentList | #
+commaOpt ::= `, WS | #
+ExpressionOpt ::= Expression | #
+IdentifierOpt ::= Identifier | #
+TypeBoundOpt ::= TypeBound | #
+WildcardBoundsOpt ::= WildcardBounds | #
+PackageDeclarationOpt ::= PackageDeclaration | #
+Opt1 ::= `o`p`e`n WS | #
+Opt2 ::= `t`o WS ModuleName Iter4  | #
+TypeParametersOpt ::= TypeParameters | #
+SuperclassOpt ::= Superclass | #
+SuperinterfacesOpt ::= Superinterfaces | #
+Opt3 ::= `= WS VariableInitializer | #
+DimsOpt ::= Dims | #
+ThrowsOpt ::= Throws | #
+Opt4 ::= ReceiverParameter `, WS | #
+FormalParameterListOpt ::= FormalParameterList | #
+Opt5 ::= Identifier `. WS | #
+ExplicitConstructorInvocationOpt ::= ExplicitConstructorInvocation | #
+BlockStatementsOpt ::= BlockStatements | #
+EnumConstantListOpt ::= EnumConstantList | #
+EnumBodyDeclarationsOpt ::= EnumBodyDeclarations | #
+ClassBodyOpt ::= ClassBody | #
+Opt6 ::= `( WS ArgumentListOpt `) WS  | #
+ExtendsInterfacesOpt ::= ExtendsInterfaces | #
+DefaultValueOpt ::= DefaultValue | #
+ElementValuePairListOpt ::= ElementValuePairList | #
+ElementValueListOpt ::= ElementValueList | #
+VariableInitializerListOpt ::= VariableInitializerList | #
+ForInitOpt ::= ForInit | #
+ForUpdateOpt ::= ForUpdate | #
+CatchesOpt ::= Catches | #
+FinallyOpt ::= Finally | #
+semiOpt ::= `; WS | #
+TypeArgumentsOrDiamondOpt ::= TypeArgumentsOrDiamond | #
+LambdaParameterListOpt ::= LambdaParameterList | #
+
+
+ALPHA ::= `a | `b | `c | `d | `e | `f | `g | `h | `i | `j | `k | `l | `m | 
+          `n | `o | `p | `q | `r | `s | `t | `u | `v | `w | `x | `y | `z | 
+          `A | `B | `C | `D | `E | `F | `G | `H | `I | `J | `K | `L | `M | 
+          `N | `O | `P | `Q | `R | `S | `T | `U | `V | `W | `X | `Y | `Z
+
+DIGIT ::= `0 | `1 | `2 | `3 | `4 | `5 | `6 | `7 | `8 | `9
+
+DIGITS ::= DIGIT | DIGITS DIGIT
+
+EAS2 ::= EAS2 ALPHA | EAS2 DIGIT | EAS2 `_  | # 
+
+ID ::= ALPHA EAS2 WS 
+
+Identifier ::= ID
+TypeIdentifier ::= ID
+
+Literal::=
+  DIGITS WS |
+  DIGITS `. DIGITS WS |
+  &STRING_SQ WS |
+  &STRING_DQ WS |
+  `t`r`u`e WS | `f`a`l`s`e WS |
+  'CharacterLiteral' |
+  `n`u`l`l WS 
+
+
+Type::=
+  PrimitiveType |
+  ReferenceType
+
+PrimitiveType::=
+  AnnotationIt  NumericType |
+  AnnotationIt  `b`o`o`l`e`a`n WS
+
+NumericType::=
+  IntegralType |
+  FloatingPointType
+
+IntegralType::=
+  `b`y`t`e WS |
+  `s`h`o`r`t WS |
+  `i`n`t WS |
+  `l`o`n`g WS |
+  `c`h`a`r WS
+
+FloatingPointType::=
+  `f`l`o`a`t WS |
+  `d`o`u`b`l`e WS
+
+ReferenceType::=
+  ClassOrInterfaceType |
+  TypeVariable |
+  ArrayType
+
+ClassOrInterfaceType::=
+  ClassType |
+  InterfaceType
+
+ClassType::=
+  AnnotationIt TypeIdentifier TypeArgumentsOpt  |
+  PackageName `. WS AnnotationIt  TypeIdentifier TypeArgumentsOpt  |
+  ClassOrInterfaceType `. WS AnnotationIt  TypeIdentifier TypeArgumentsOpt 
+
+InterfaceType::=
+  ClassType
+
+TypeVariable::=
+  AnnotationIt  TypeIdentifier
+
+ArrayType::=
+  PrimitiveType Dims |
+  ClassOrInterfaceType Dims |
+  TypeVariable Dims
+
+Dims::=
+  AnnotationIt  `[ WS `] WS  Iter1 
+
+TypeParameter::=
+  TypeParameterModifierIt  TypeIdentifier TypeBoundOpt 
+
+TypeParameterModifier::=
+  Annotation
+
+TypeBound::=
+  `e`x`t`e`n`d`s WS TypeVariable |
+  `e`x`t`e`n`d`s WS ClassOrInterfaceType AdditionalBoundIt 
+
+AdditionalBound::=
+  `& WS InterfaceType
+
+TypeArguments::=
+  `< WS TypeArgumentList `> WS
+
+TypeArgumentList::=
+  TypeArgument Iter2
+
+TypeArgument::=
+  ReferenceType |
+  Wildcard
+
+Wildcard::=
+  AnnotationIt  `? WS WildcardBoundsOpt
+
+WildcardBounds::=
+  `e`x`t`e`n`d`s WS ReferenceType |
+  `s`u`p`e`r WS ReferenceType
+
+ModuleName::=
+  Identifier |
+  ModuleName `. WS Identifier
+
+PackageName::=
+  Identifier |
+  PackageName `. WS Identifier
+
+TypeName::=
+  TypeIdentifier |
+  PackageOrTypeName `. WS TypeIdentifier
+
+ExpressionName::=
+  Identifier |
+  AmbiguousName `. WS Identifier
+
+MethodName::=
+  Identifier
+
+PackageOrTypeName::=
+  Identifier |
+  PackageOrTypeName `. WS Identifier
+
+AmbiguousName::=
+  Identifier |
+  AmbiguousName `. WS Identifier
+
+CompilationUnit::=
+  OrdinaryCompilationUnit |
+  ModularCompilationUnit
+
+OrdinaryCompilationUnit::=
+  PackageDeclarationOpt  ImportDeclarationIt  TypeDeclarationIt 
+
+ModularCompilationUnit::=
+  ImportDeclarationIt  ModuleDeclaration
+
+PackageDeclaration::=
+  PackageModifierIt `p`a`c`k`a`g`e WS Identifier Iter3  `; WS
+
+PackageModifier::=
+  Annotation
+
+ImportDeclaration::=
+  SingleTypeImportDeclaration |
+  TypeImportOnDemandDeclaration |
+  SingleStaticImportDeclaration |
+  StaticImportOnDemandDeclaration
+
+SingleTypeImportDeclaration::=
+  `i`m`p`o`r`t WS TypeName `; WS
+
+TypeImportOnDemandDeclaration::=
+  `i`m`p`o`r`t WS PackageOrTypeName `. WS `* WS `; WS
+
+SingleStaticImportDeclaration::=
+  `i`m`p`o`r`t WS `s`t`a`t`i`c WS TypeName `. WS Identifier `; WS
+
+StaticImportOnDemandDeclaration::=
+  `i`m`p`o`r`t WS `s`t`a`t`i`c WS TypeName `. WS `* WS `; WS
+
+TypeDeclaration::=
+  ClassDeclaration |
+  InterfaceDeclaration |
+  `; WS
+
+ModuleDeclaration::=
+  AnnotationIt  Opt1 `m`o`d`u`l`e WS Identifier Iter3  `{ WS  ModuleDirectiveIt  `} WS 
+
+ModuleDirective::=
+  `r`e`q`u`i`r`e`s WS RequiresModifierIt  ModuleName `; WS |
+  `e`x`p`o`r`t`s WS PackageName Opt2  `; WS |
+  `o`p`e`n`s WS PackageName Opt2  `; WS |
+  `u`s`e`s WS TypeName `; WS |
+  `p`r`o`v`i`d`e`s WS TypeName `w`i`t`h WS TypeName Iter5 `; WS
+
+RequiresModifier::=
+  `t`r`a`n`s`i`t`i`v`e WS |
+  `s`t`a`t`i`c WS
+
+ClassDeclaration::=
+  NormalClassDeclaration |
+  EnumDeclaration
+
+NormalClassDeclaration::=
+  ClassModifierIt `c`l`a`s`s WS TypeIdentifier TypeParametersOpt  SuperclassOpt  SuperinterfacesOpt  ClassBody
+
+ClassModifier::=
+  Annotation |
+  `p`u`b`l`i`c WS |
+  `p`r`o`t`e`c`t`e`d WS |
+  `p`r`i`v`a`t`e WS |
+  `a`b`s`t`r`a`c`t WS |
+  `s`t`a`t`i`c WS |
+  `f`i`n`a`l WS |
+  `s`t`r`i`c`t`f`p WS
+
+TypeParameters::=
+  `< WS TypeParameterList `> WS
+
+TypeParameterList::=
+  TypeParameter Iter6 
+
+Superclass::=
+  `e`x`t`e`n`d`s WS ClassType
+
+Superinterfaces::=
+  `i`m`p`l`e`m`e`n`t`s WS InterfaceTypeList
+
+InterfaceTypeList::=
+  InterfaceType Iter7 
+
+ClassBody::=
+  `{ WS  ClassBodyDeclarationIt  `} WS 
+
+ClassBodyDeclaration::=
+  ClassMemberDeclaration |
+  InstanceInitializer |
+  StaticInitializer |
+  ConstructorDeclaration
+
+ClassMemberDeclaration::=
+  FieldDeclaration |
+  MethodDeclaration |
+  ClassDeclaration |
+  InterfaceDeclaration |
+  `; WS
+
+FieldDeclaration::=
+  FieldModifierIt UnannType VariableDeclaratorList `; WS
+
+FieldModifier::=
+  Annotation |
+  `p`u`b`l`i`c WS |
+  `p`r`o`t`e`c`t`e`d WS |
+  `p`r`i`v`a`t`e WS |
+  `s`t`a`t`i`c WS |
+  `f`i`n`a`l WS |
+  `t`r`a`n`s`i`e`n`t WS |
+  `v`o`l`a`t`i`l`e WS
+
+VariableDeclaratorList::=
+  VariableDeclarator Iter8 
+
+VariableDeclarator::=
+  VariableDeclaratorId Opt3
+
+VariableDeclaratorId::=
+  Identifier DimsOpt
+
+VariableInitializer::=
+  Expression |
+  ArrayInitializer
+
+UnannType::=
+  UnannPrimitiveType |
+  UnannReferenceType
+
+UnannPrimitiveType::=
+  NumericType |
+  `b`o`o`l`e`a`n WS
+
+UnannReferenceType::=
+  UnannClassOrInterfaceType |
+  UnannTypeVariable |
+  UnannArrayType
+
+UnannClassOrInterfaceType::=
+  UnannClassType |
+  UnannInterfaceType
+
+UnannClassType::=
+  TypeIdentifier TypeArgumentsOpt  |
+  PackageName `. WS AnnotationIt  TypeIdentifier TypeArgumentsOpt  |
+  UnannClassOrInterfaceType `. WS  AnnotationIt  TypeIdentifier TypeArgumentsOpt 
+
+UnannInterfaceType::=
+  UnannClassType
+
+UnannTypeVariable::=
+  TypeIdentifier
+
+UnannArrayType::=
+  UnannPrimitiveType Dims |
+  UnannClassOrInterfaceType Dims |
+  UnannTypeVariable Dims
+
+MethodDeclaration::=
+  MethodModifierIt  MethodHeader MethodBody
+
+MethodModifier::=
+  Annotation |
+  `p`u`b`l`i`c WS |
+  `p`r`o`t`e`c`t`e`d WS |
+  `p`r`i`v`a`t`e WS |
+  `a`b`s`t`r`a`c`t WS |
+  `s`t`a`t`i`c WS |
+  `f`i`n`a`l WS |
+  `s`y`n`c`h`r`o`n`i`z`e`d WS |
+  `n`a`t`i`v`e WS |
+  `s`t`r`i`c`t`f`p WS
+
+MethodHeader::=
+  Result MethodDeclarator ThrowsOpt  |
+  TypeParameters AnnotationIt  Result MethodDeclarator ThrowsOpt
+
+Result::=
+  UnannType |
+  `v`o`i`d WS
+
+MethodDeclarator::=
+  Identifier `( WS  Opt4  FormalParameterListOpt  `) WS DimsOpt
+
+ReceiverParameter::=
+  AnnotationIt  UnannType Opt5  `t`h`i`s WS
+
+FormalParameterList::=
+  FormalParameter Iter9 
+
+FormalParameter::=
+  VariableModifierIt  UnannType VariableDeclaratorId |
+  VariableArityParameter
+
+VariableArityParameter::=
+  VariableModifierIt  UnannType AnnotationIt  `.`.`. WS Identifier
+
+VariableModifier::=
+  Annotation |
+  `f`i`n`a`l WS
+
+Throws::=
+  `t`h`r`o`w`s WS ExceptionTypeList
+
+ExceptionTypeList::=
+  ExceptionType Iter10 
+
+ExceptionType::=
+  ClassType |
+  TypeVariable
+
+MethodBody::=
+  Block |
+  `; WS
+
+InstanceInitializer::=
+  Block
+
+StaticInitializer::=
+  `s`t`a`t`i`c WS Block
+
+ConstructorDeclaration::=
+  ConstructorModifierIt  ConstructorDeclarator ThrowsOpt  ConstructorBody
+
+ConstructorModifier::=
+  Annotation |
+  `p`u`b`l`i`c WS |
+  `p`r`o`t`e`c`t`e`d WS |
+  `p`r`i`v`a`t`e WS
+
+ConstructorDeclarator::=
+  TypeParametersOpt  SimpleTypeName `( WS Opt4  FormalParameterListOpt  `) WS 
+
+SimpleTypeName::=
+  TypeIdentifier
+
+ConstructorBody::=
+  `{ WS  ExplicitConstructorInvocationOpt BlockStatementsOpt  `} WS 
+
+ExplicitConstructorInvocation::=
+  TypeArgumentsOpt  `t`h`i`s WS `( WS  ArgumentListOpt  `) WS  `; WS |
+  TypeArgumentsOpt `s`u`p`e`r WS `( WS  ArgumentListOpt  `) WS  `; WS |
+  ExpressionName `. WS TypeArgumentsOpt  `s`u`p`e`r WS `( WS  ArgumentListOpt `) WS  `; WS |
+  Primary `. WS TypeArgumentsOpt  `s`u`p`e`r WS `( WS ArgumentListOpt `) WS  `; WS
+
+EnumDeclaration::=
+  ClassModifierIt  `e`n`u`m WS TypeIdentifier SuperinterfacesOpt  EnumBody
+
+EnumBody::=
+  `{ WS  EnumConstantListOpt  commaOpt  EnumBodyDeclarationsOpt  `} WS 
+
+EnumConstantList::=
+  EnumConstant Iter11 
+
+EnumConstant::=
+  EnumConstantModifierIt  Identifier Opt6  ClassBodyOpt
+
+EnumConstantModifier::=
+  Annotation
+
+EnumBodyDeclarations::=
+  `; WS ClassBodyDeclarationIt 
+
+InterfaceDeclaration::=
+  NormalInterfaceDeclaration |
+  AnnotationTypeDeclaration
+
+NormalInterfaceDeclaration::=
+  InterfaceModifierIt  `i`n`t`e`r`f`a`c`e WS TypeIdentifier TypeParametersOpt  ExtendsInterfacesOpt InterfaceBody
+
+InterfaceModifier::=
+  Annotation |
+  `p`u`b`l`i`c WS |
+  `p`r`o`t`e`c`t`e`d WS |
+  `p`r`i`v`a`t`e WS |
+  `a`b`s`t`r`a`c`t WS |
+  `s`t`a`t`i`c WS |
+  `s`t`r`i`c`t`f`p WS
+
+ExtendsInterfaces::=
+  `e`x`t`e`n`d`s WS InterfaceTypeList
+
+InterfaceBody::=
+  `{ WS InterfaceMemberDeclarationIt  `} WS 
+
+InterfaceMemberDeclaration::=
+  ConstantDeclaration |
+  InterfaceMethodDeclaration |
+  ClassDeclaration |
+  InterfaceDeclaration |
+  `; WS
+
+ConstantDeclaration::=
+  ConstantModifierIt  UnannType VariableDeclaratorList `; WS
+
+ConstantModifier::=
+  Annotation |
+  `p`u`b`l`i`c WS |
+  `s`t`a`t`i`c WS |
+  `f`i`n`a`l WS
+
+InterfaceMethodDeclaration::=
+  InterfaceMethodModifierIt  MethodHeader MethodBody
+
+InterfaceMethodModifier::=
+  Annotation |
+  `p`u`b`l`i`c WS |
+  `p`r`i`v`a`t`e WS |
+  `a`b`s`t`r`a`c`t WS |
+  `d`e`f`a`u`l`t WS |
+  `s`t`a`t`i`c WS |
+  `s`t`r`i`c`t`f`p WS
+
+AnnotationTypeDeclaration::=
+  InterfaceModifierIt  `@ WS `i`n`t`e`r`f`a`c`e WS TypeIdentifier AnnotationTypeBody
+
+AnnotationTypeBody::=
+  `{ WS  AnnotationTypeMemberDeclarationIt  `} WS 
+
+AnnotationTypeMemberDeclaration::=
+  AnnotationTypeElementDeclaration |
+  ConstantDeclaration |
+  ClassDeclaration |
+  InterfaceDeclaration |
+  `; WS
+
+AnnotationTypeElementDeclaration::=
+  AnnotationTypeElementModifierIt  UnannType Identifier `( WS `) WS  DimsOpt DefaultValueOpt `; WS
+
+AnnotationTypeElementModifier::=
+  Annotation |
+  `p`u`b`l`i`c WS |
+  `a`b`s`t`r`a`c`t WS
+
+DefaultValue::=
+  `d`e`f`a`u`l`t WS ElementValue
+
+Annotation::=
+  NormalAnnotation |
+  MarkerAnnotation |
+  SingleElementAnnotation
+
+NormalAnnotation::=
+  `@ WS TypeName `( WS ElementValuePairListOpt `) WS 
+
+ElementValuePairList::=
+  ElementValuePair Iter12 
+
+ElementValuePair::=
+  Identifier `= WS ElementValue
+
+ElementValue::=
+  ConditionalExpression |
+  ElementValueArrayInitializer |
+  Annotation
+
+ElementValueArrayInitializer::=
+  `{ WS ElementValueListOpt  commaOpt  `} WS 
+
+ElementValueList::=
+  ElementValue Iter13 
+
+MarkerAnnotation::=
+  `@ WS TypeName
+
+SingleElementAnnotation::=
+  `@ WS TypeName `( WS  ElementValue `) WS 
+
+ArrayInitializer::=
+  `{ WS VariableInitializerListOpt commaOpt  `} WS
+
+VariableInitializerList::=
+  VariableInitializer Iter14 
+
+Block::=
+  `{ WS  BlockStatementsOpt `} WS 
+
+BlockStatements::=
+  BlockStatement BlockStatementIt 
+
+BlockStatement::=
+  LocalVariableDeclarationStatement |
+  ClassDeclaration |
+  Statement
+
+LocalVariableDeclarationStatement::=
+  LocalVariableDeclaration `; WS
+
+LocalVariableDeclaration::=
+  VariableModifierIt  LocalVariableType VariableDeclaratorList
+
+LocalVariableType::=
+  UnannType |
+  `v`a`r WS
+
+Statement::=
+  StatementWithoutTrailingSubstatement |
+  LabeledStatement |
+  IfThenStatement |
+  IfThenElseStatement |
+  WhileStatement |
+  ForStatement
+
+StatementNoShortIf::=
+  StatementWithoutTrailingSubstatement |
+  LabeledStatementNoShortIf |
+  IfThenElseStatementNoShortIf |
+  WhileStatementNoShortIf |
+  ForStatementNoShortIf
+
+StatementWithoutTrailingSubstatement::=
+  Block |
+  EmptyStatement |
+  ExpressionStatement |
+  AssertStatement |
+  SwitchStatement |
+  DoStatement |
+  BreakStatement |
+  ContinueStatement |
+  ReturnStatement |
+  SynchronizedStatement |
+  ThrowStatement |
+  TryStatement
+
+EmptyStatement::=
+  `; WS
+
+LabeledStatement::=
+  Identifier `: WS Statement
+
+LabeledStatementNoShortIf::=
+  Identifier `: WS StatementNoShortIf
+
+ExpressionStatement::=
+  StatementExpression `; WS
+
+StatementExpression::=
+  Assignment |
+  PreIncrementExpression |
+  PreDecrementExpression |
+  PostIncrementExpression |
+  PostDecrementExpression |
+  MethodInvocation |
+  ClassInstanceCreationExpression
+
+IfThenStatement::=
+  `i`f WS `( WS  Expression `) WS  Statement
+
+IfThenElseStatement::=
+  `i`f WS `( WS  Expression `) WS  StatementNoShortIf `e`l`s`e WS Statement
+
+IfThenElseStatementNoShortIf::=
+  `i`f WS `( WS  Expression `) WS  StatementNoShortIf `e`l`s`e WS StatementNoShortIf
+
+AssertStatement::=
+  `a`s`s`e`r`t WS Expression `; WS |
+  `a`s`s`e`r`t WS Expression `: WS Expression `; WS
+
+SwitchStatement::=
+  `s`w`i`t`c`h WS `( WS  Expression `) WS  SwitchBlock
+
+SwitchBlock::=
+  `{ WS SwitchBlockStatementGroupIt  SwitchLabelIt  `} WS 
+
+SwitchBlockStatementGroup::=
+  SwitchLabels BlockStatements
+
+SwitchLabels::=
+  SwitchLabel SwitchLabelIt 
+
+SwitchLabel::=
+  `c`a`s`e WS ConstantExpression `: WS |
+  `c`a`s`e WS EnumConstantName `: WS |
+  `d`e`f`a`u`l`t WS `: WS
+
+EnumConstantName::=
+  Identifier
+
+WhileStatement::=
+  `w`h`i`l`e WS `( WS  Expression `) WS  Statement
+
+WhileStatementNoShortIf::=
+  `w`h`i`l`e WS `( WS  Expression `) WS  StatementNoShortIf
+
+DoStatement::=
+  `d`o WS Statement `w`h`i`l`e WS `( WS  Expression `) WS  `; WS
+
+ForStatement::=
+  BasicForStatement |
+  EnhancedForStatement
+
+ForStatementNoShortIf::=
+  BasicForStatementNoShortIf |
+  EnhancedForStatementNoShortIf
+
+BasicForStatement::=
+  `f`o`r WS `( WS  ForInitOpt  `; WS ExpressionOpt  `; WS ForUpdateOpt `) WS  Statement
+
+BasicForStatementNoShortIf::=
+  `f`o`r WS `( WS  ForInitOpt  `; WS ExpressionOpt  `; WS ForUpdateOpt `) WS  StatementNoShortIf
+
+ForInit::=
+  StatementExpressionList |
+  LocalVariableDeclaration
+
+ForUpdate::=
+  StatementExpressionList
+
+StatementExpressionList::=
+  StatementExpression Iter15 
+
+EnhancedForStatement::=
+  `f`o`r WS `( WS  VariableModifierIt  LocalVariableType VariableDeclaratorId `: WS Expression `) WS  Statement
+
+EnhancedForStatementNoShortIf::=
+  `f`o`r WS `( WS  VariableModifierIt  LocalVariableType VariableDeclaratorId `: WS Expression `) WS  StatementNoShortIf
+
+BreakStatement::=
+  `b`r`e`a`k WS IdentifierOpt  `; WS
+
+ContinueStatement::=
+  `c`o`n`t`i`n`u`e WS IdentifierOpt  `; WS
+
+ReturnStatement::=
+  `r`e`t`u`r`n WS ExpressionOpt `; WS
+
+ThrowStatement::=
+  `t`h`r`o`w WS Expression `; WS
+
+SynchronizedStatement::=
+  `s`y`n`c`h`r`o`n`i`z`e`d WS `( WS  Expression `) WS  Block
+
+TryStatement::=
+  `t`r`y WS Block Catches |
+  `t`r`y WS Block CatchesOpt Finally |
+  TryWithResourcesStatement
+
+Catches::=
+  CatchClause CatchClauseIt 
+
+CatchClause::=
+  `c`a`t`c`h WS `( WS  CatchFormalParameter `) WS  Block
+
+CatchFormalParameter::=
+  VariableModifierIt  CatchType VariableDeclaratorId
+
+CatchType::=
+  UnannClassType Iter16 
+
+Finally::=
+  `f`i`n`a`l`l`y WS Block
+
+TryWithResourcesStatement::=
+  `t`r`y WS ResourceSpecification Block CatchesOpt FinallyOpt
+
+ResourceSpecification::=
+  `( WS  ResourceList semiOpt `) WS 
+
+ResourceList::=
+  Resource Iter17 
+
+Resource::=
+  VariableModifierIt  LocalVariableType Identifier `= WS Expression |
+  `V`a`r`i`a`b`l`e`A`c`c`e`s`s WS
+
+Primary::=
+  PrimaryNoNewArray |
+  ArrayCreationExpression
+
+PrimaryNoNewArray::=
+  Literal |
+  ClassLiteral |
+  `t`h`i`s WS |
+  TypeName `. WS `t`h`i`s WS |
+  `( WS  Expression `) WS  |
+  ClassInstanceCreationExpression |
+  FieldAccess |
+  ArrayAccess |
+  MethodInvocation |
+  MethodReference
+
+ClassLiteral::=
+  TypeName Iter18 `. WS `c`l`a`s`s WS |
+  NumericType Iter18  `. WS `c`l`a`s`s WS |
+  `b`o`o`l`e`a`n WS Iter18  `. WS `c`l`a`s`s WS |
+  `v`o`i`d WS `. WS `c`l`a`s`s WS
+
+ClassInstanceCreationExpression::=
+  UnqualifiedClassInstanceCreationExpression |
+  ExpressionName `. WS UnqualifiedClassInstanceCreationExpression |
+  Primary `. WS UnqualifiedClassInstanceCreationExpression
+
+UnqualifiedClassInstanceCreationExpression::=
+  `n`e`w WS TypeArgumentsOpt  ClassOrInterfaceTypeToInstantiate `( WS  ArgumentListOpt `) WS  ClassBodyOpt
+
+ClassOrInterfaceTypeToInstantiate::=
+  AnnotationIt  Identifier Iter19  TypeArgumentsOrDiamondOpt
+
+TypeArgumentsOrDiamond::=
+  TypeArguments |
+  `< WS `> WS
+
+FieldAccess::=
+  Primary `. WS Identifier |
+  `s`u`p`e`r WS `. WS Identifier |
+  TypeName `. WS `s`u`p`e`r WS `. WS Identifier
+
+ArrayAccess::=
+  ExpressionName `[ WS Expression `] WS  |
+  PrimaryNoNewArray `[ WS Expression `] WS 
+
+MethodInvocation::=
+  MethodName `( WS ArgumentListOpt `) WS  |
+  TypeName `. WS TypeArgumentsOpt Identifier `( WS ArgumentListOpt `) WS  |
+  ExpressionName `. WS TypeArgumentsOpt Identifier `( WS ArgumentListOpt `) WS  |
+  Primary `. WS TypeArgumentsOpt Identifier `( WS  ArgumentListOpt `) WS  |
+  `s`u`p`e`r WS `. WS TypeArgumentsOpt Identifier `( WS  ArgumentListOpt `) WS  |
+  TypeName `. WS `s`u`p`e`r WS `. WS TypeArgumentsOpt Identifier `( WS ArgumentListOpt `) WS 
+
+ArgumentList::=
+  Expression Iter20 
+
+MethodReference::=
+  ExpressionName `:`: WS TypeArgumentsOpt Identifier |
+  Primary `:`: WS TypeArgumentsOpt Identifier |
+  ReferenceType `:`: WS TypeArgumentsOpt Identifier |
+  `s`u`p`e`r WS `:`: WS TypeArgumentsOpt Identifier |
+  TypeName `. WS `s`u`p`e`r WS `:`: WS TypeArgumentsOpt Identifier |
+  ClassType `:`: WS TypeArgumentsOpt `n`e`w WS |
+  ArrayType `:`: WS `n`e`w WS
+
+ArrayCreationExpression::=
+  `n`e`w WS PrimitiveType DimExprs DimsOpt  |
+  `n`e`w WS ClassOrInterfaceType DimExprs DimsOpt  |
+  `n`e`w WS PrimitiveType Dims ArrayInitializer |
+  `n`e`w WS ClassOrInterfaceType Dims ArrayInitializer
+
+DimExprs::=
+  DimExpr DimExprIt 
+
+DimExpr::=
+  AnnotationIt  `[ WS Expression `] WS 
+
+Expression::=
+  LambdaExpression |
+  AssignmentExpression
+
+LambdaExpression::=
+  LambdaParameters `-`> WS LambdaBody
+
+LambdaParameters::=
+  `( WS LambdaParameterListOpt `) WS  |
+  Identifier
+
+LambdaParameterList::=
+  LambdaParameter Iter21  |
+  Identifier Iter3 
+
+LambdaParameter::=
+  VariableModifierIt  LambdaParameterType VariableDeclaratorId |
+  VariableArityParameter
+
+LambdaParameterType::=
+  UnannType |
+  `v`a`r WS
+
+LambdaBody::=
+  Expression |
+  Block
+
+AssignmentExpression::=
+  ConditionalExpression |
+  Assignment
+
+Assignment::=
+  LeftHandSide AssignmentOperator Expression
+
+LeftHandSide::=
+  ExpressionName |
+  FieldAccess |
+  ArrayAccess
+
+AssignmentOperator::=
+  `= WS | `*`= WS | `/`= WS | `%`= WS | `+`= WS | `-`= WS | `<`<`= WS | `>`>`= WS |
+  `>`>`>`= WS | `&`= WS | `^`= WS | `|`= WS
+
+ConditionalExpression::=
+  ConditionalOrExpression |
+  ConditionalOrExpression `? WS Expression `: WS ConditionalExpression |
+  ConditionalOrExpression `? WS Expression `: WS LambdaExpression
+
+ConditionalOrExpression::=
+  ConditionalAndExpression |
+  ConditionalOrExpression `|`| WS ConditionalAndExpression
+
+ConditionalAndExpression::=
+  InclusiveOrExpression |
+  ConditionalAndExpression `&`& WS InclusiveOrExpression
+
+InclusiveOrExpression::=
+  ExclusiveOrExpression |
+  InclusiveOrExpression `| WS  ExclusiveOrExpression
+
+ExclusiveOrExpression::=
+  AndExpression |
+  ExclusiveOrExpression `^ WS AndExpression
+
+AndExpression::=
+  EqualityExpression |
+  AndExpression `& WS EqualityExpression
+
+EqualityExpression::=
+  RelationalExpression |
+  EqualityExpression `=`= WS RelationalExpression |
+  EqualityExpression `!`= WS RelationalExpression
+
+RelationalExpression::=
+  ShiftExpression |
+  RelationalExpression `< WS ShiftExpression |
+  RelationalExpression `> WS ShiftExpression |
+  RelationalExpression `<`= WS ShiftExpression |
+  RelationalExpression `>`= WS ShiftExpression |
+  RelationalExpression `i`n`s`t`a`n`c`e`o`f WS ReferenceType
+
+ShiftExpression::=
+  AdditiveExpression |
+  ShiftExpression `<`< WS AdditiveExpression |
+  ShiftExpression `>`> WS AdditiveExpression |
+  ShiftExpression `>`>`> WS AdditiveExpression
+
+AdditiveExpression::=
+  MultiplicativeExpression |
+  AdditiveExpression `+ WS MultiplicativeExpression |
+  AdditiveExpression `- WS MultiplicativeExpression
+
+MultiplicativeExpression::=
+  UnaryExpression |
+  MultiplicativeExpression `* WS UnaryExpression |
+  MultiplicativeExpression `/ WS UnaryExpression |
+  MultiplicativeExpression `% WS UnaryExpression
+
+UnaryExpression::=
+  PreIncrementExpression |
+  PreDecrementExpression |
+  `+ WS UnaryExpression |
+  `- WS UnaryExpression |
+  UnaryExpressionNotPlusMinus
+
+PreIncrementExpression::=
+  `+`+ WS UnaryExpression
+
+PreDecrementExpression::=
+  `-`- WS UnaryExpression
+
+UnaryExpressionNotPlusMinus::=
+  PostfixExpression |
+  `~ WS UnaryExpression |
+  `! WS UnaryExpression |
+  CastExpression
+
+PostfixExpression::=
+  Primary |
+  ExpressionName |
+  PostIncrementExpression |
+  PostDecrementExpression
+
+PostIncrementExpression::=
+  PostfixExpression `+`+ WS
+
+PostDecrementExpression::=
+  PostfixExpression `-`- WS
+
+CastExpression::=
+  `( WS  PrimitiveType `) WS  UnaryExpression |
+  `( WS  ReferenceType AdditionalBoundIt  `) WS  UnaryExpressionNotPlusMinus |
+  `( WS  ReferenceType AdditionalBoundIt  `) WS  LambdaExpression
+
+ConstantExpression::=
+  Expression
+

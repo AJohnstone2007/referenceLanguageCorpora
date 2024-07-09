@@ -2,7 +2,7 @@
 
 This repository contains programming language grammars and example programs in those languages.
 
-See https://github.com/AJohnstone2007/referenceLanguageCorpora/blob/main/provenance.md for details on how these corpora were constructed.
+See the README.md file in individual directories for details on how these corpora were constructed.
 
 The collection is curated by Adrian Johnstone and Elizabeth Scott of the Centre for Software Language Engineering at Royal Holloway, University of London.
 
@@ -16,4 +16,4 @@ Our research papers at https://pure.royalholloway.ac.uk/en/persons/adrian-johnst
 
 There is a large curated collection of 'official' language grammars at https://slebok.github.io/zoo/ 
 
-Adrian Johnstone, June 2024
+Adrian Johnstone, July 2024
