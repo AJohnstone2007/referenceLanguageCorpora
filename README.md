@@ -4,7 +4,7 @@ This repository contains programming language grammars and example programs in t
 
 ## Subdirectories
 
-1. **languages** contains grammars and example inputs for well some well-known general purpose languages. the **rhul** subfolders contain examples that we have used in many of our research papers. Where available, we have also included large sets of examples drawn from publicaly available repositories. We thank the owners of those repos for making the material available.
+1. **languages** contains grammars and example inputs for well some well-known general purpose languages. The **rhul** subfolders contain examples that we have used in many of our research papers. For some languages we have also included large sets of examples drawn from publicaly available repositories. We thank the owners of those repos for making the material available.
 See the README.md file in individual directories for details on how these corpora were constructed.
 
 2. **ambiguityTest** contains 'torture' grammars designed to stress-test generalised parsing algorithms.
