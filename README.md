@@ -19,7 +19,7 @@ The grammars and example inputs come in two flavours: tokenised (tok) and non-to
 
 The purpose of the tokenised variants is to suppress the lexicalisation overhead for those algorithms that intermingle lexicalisation and parsing, enabling us to characterise the parser runtimes independently of the lexical complexity.
 
-#### 'Full' and 'compressed white' space variants
+#### 'Full' and 'compressed white space' variants
 
 For some inputs we provide compressed white space (**cws**) inputs in which every run of whitespace is replaced by a single space unless the run contains one or more newline characters, in which case the run is replaced by a single newline.
 
@@ -31,11 +31,11 @@ The `runGTB` and `runART` scripts in **experiments** scan the entire **languages
 
 The idea is that you load the **try**, **str** and **tok** directories with the elements that you want to characterise. After a run, the file **log.csv** will contain summary statistics.
 
-You will need to edit `runGTB` and `runART` to specify the location of your GTB executables and your ART JAR. You can also specify the number of times each experiment is run; we use this to get 10 results for each experiment so as to smooth out timing irregularities by discarding four outliers and taking the mean runtimes of the remaining six.
+You will need to edit `runGTB` and `runART` to specify the location of your GTB executables and your ART JAR. You can also specify the number of times each experiment is run; we use this to get 10 results for each experiment so as to smooth out timing irregularities by discarding the two fastest and two slowest runs,and then taking the mean runtimes of the remaining six.
 
 **A full run can be time consuming.**
 
-##Directory structure
+## Directory structure
 
 0 RLC root
 
@@ -43,15 +43,15 @@ You will need to edit `runGTB` and `runART` to specify the location of your GTB 
 
 1 .. experiments
 
-2 .... runGTB *(script to scan directory stucture and run GTB stubs)*
+2 .... `runGTB` *(script to scan directory stucture and run GTB stub scripts)*
 
-2 .... runART  *(script to scan directory stucture and run ART stubs)*
+2 .... `runART`  *(script to scan directory stucture and run ART stub scripts)*
 
-2 .... scripts *(partial ART and GTB scripts that are concatenated with grammars)*
+2 .... scripts *(a collection of ART and GTB stub scripts that are concatenated with grammars)*
 
-2 .... **try** *(a subset of **scripts** to be used in the next experimental run)*
+2 .... **try** *(a subset of stub scripts to be used in the next experimental run)*
 
-3 ...... brnglr.gtb *(script stub for running BRNGLR under GTB)*
+3 ...... brnglr.gtb *(example script stub for running BRNGLR under GTB)*
 
 3 ...... *(more script stubs...)*
 
@@ -62,6 +62,8 @@ You will need to edit `runGTB` and `runART` to specify the location of your GTB 
 2 .... *(more languages...)*
 
 2 .... java
+
+---
 
 3 ...... grammar
 
@@ -75,13 +77,11 @@ You will need to edit `runGTB` and `runART` to specify the location of your GTB 
 
 5 .......... **tok** *(grammars for jls13 that expect inputs to be 'tokenised')*
 
----
-
 3 ...... corpus
 
-4 ........ *(more corpora...)*
+4 ........ *(more corpora for Java...)*
 
-4 ........ rhul *(examples from our research papers)*
+4 ........ C1 *(a specific corpus for Java)*
 
 5 .......... doc *(the provenance of these inputs)*
 
@@ -89,9 +89,9 @@ You will need to edit `runGTB` and `runART` to specify the location of your GTB 
 
 5 .......... cws *(compressed white space version of each input)*
 
-5 .......... **str** *(inputs with full lexical structure)*
+5 .......... **str** *(inputs to be scanned with full lexical structure)*
 
-5 .......... **tok** *('tokenised' inputs)*
+5 .......... **tok** *('tokenised' inputs to be scanned)*
 
 ## Other resources
  
