@@ -1,4 +1,4 @@
-# referenceLanguageCorpora (RLC)
+# Reference Language Corpora (RLC)
 
 This repository contains programming language grammars and example programs in those languages.
 
