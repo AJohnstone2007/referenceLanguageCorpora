@@ -29,11 +29,11 @@ The purpose of the **cws** variants is again to normalise lexer performance so t
 
 The runGTB and runART scripts in **experiments** scan the entire **languages** directory structure, running experiments specified in **experiments/try** across all of the **str** and **tok** directories. 
 
-The idea is that you load the **try**, **str** and **tok** directories with the elements that you want to characterise. After a run, the fule **log.csv** will contain summary statistics.
+The idea is that you load the **try**, **str** and **tok** directories with the elements that you want to characterise. After a run, the file **log.csv** will contain summary statistics.
 
 **A full run can be time consuming.**
 
-##Directory structure**
+##Directory structure
 
 0 RLC root
 
@@ -41,55 +41,55 @@ The idea is that you load the **try**, **str** and **tok** directories with the 
 
 1 .. experiments
 
-2 .... runGTB (scan directory stucture and run GTB stubs)
+2 .... runGTB *(script to scan directory stucture and run GTB stubs)*
 
-2 .... runART  (scan directory stucture and run ART stubs)
+2 .... runART  *(script to scan directory stucture and run ART stubs)*
 
-2 .... scripts (contains partial ART and GTB scripts that are concatenated with grammars)
+2 .... scripts *(partial ART and GTB scripts that are concatenated with grammars)*
 
-2 .... **try** subset of **scripts** to be used in experimental runs
+2 .... **try** *(a subset of **scripts** to be used in the next experimental run)*
 
-3 ...... brnglr.gtb (script stub for running BRNGLR under GTB)
+3 ...... brnglr.gtb *(script stub for running BRNGLR under GTB)*
 
-3 ...... (more script stubs...)
+3 ...... *(more script stubs...)*
 
 ---
 
 1 .. languages
 
-2 .... (more languages...)
+2 .... *(more languages...)*
 
 2 .... java
 
 3 ...... grammar
 
-4 ........ (more grammars for java...)
+4 ........ *(more grammars for java...)*
 
-4 ........ jls13 (grammars for a specific language version)
+4 ........ jls13 *(grammars for this specific language version)*
 
-5 .......... doc (provenance)
+5 .......... doc *(provenance)*
 
-5 .......... **str** (grammars for jls13 that include full lexical rules)
+5 .......... **str** *(grammars for jls13 that include full lexical rules)*
 
-5 .......... **tok** (grammars for jls13 that expect inputs to be 'tokenised')
+5 .......... **tok** *(grammars for jls13 that expect inputs to be 'tokenised')*
 
 ---
 
 3 ...... corpus
 
-4 ........ (more corpora...)
+4 ........ *(more corpora...)*
 
-4 ........ rhul (examples from our research papers)
+4 ........ rhul *(examples from our research papers)*
 
-5 .......... doc (the provenance of these inputs)
+5 .......... doc *(the provenance of these inputs)*
 
-5 .......... src (the original version of each input)
+5 .......... src *(the original version of each input)*
 
-5 .......... cws (compressed white space version of each input)
+5 .......... cws *(compressed white space version of each input)*
 
-5 .......... **str** (inputs with full lexical structure)
+5 .......... **str** *(inputs with full lexical structure)*
 
-5 .......... **tok** ('tokenised' inputs)
+5 .......... **tok** *('tokenised' inputs)*
 
 ## Other resources
  
