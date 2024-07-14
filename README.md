@@ -47,7 +47,7 @@ You will need to edit `runGTB` and `runART` to specify the location of your GTB 
 
 2 .... scripts *(a collection of ART and GTB stub scripts that are concatenated with grammars)*
 
-2 .... log *(results from experimental runs on a variet of machines)*
+2 .... log *(results from experimental runs)*	
 
 2 .... `runGTB` *(script to scan directory stucture and run GTB stub scripts)*
 
