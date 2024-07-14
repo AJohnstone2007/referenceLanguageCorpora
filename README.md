@@ -20,20 +20,29 @@ The scripts in **experiments** scan the directory structure, running experiments
 RLC root
 
 .. experiments
+
 .. languages
 
 .... c
 
 ......grammar
+
 ........ansic
+
 ..........str
+
 ..........tok
 
 ......corpus
+
 ........rhul
+
 ..........doc
+
 ..........src
+
 ..........str
+
 ..........tok
 
 ## Other resources
