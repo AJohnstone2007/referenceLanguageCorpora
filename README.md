@@ -21,11 +21,13 @@ The purpose of the tokenised variants is to suppress the lexicalisation overhead
 
 #### 'Full' and 'compressed white space' variants
 
-For some inputs we provide compressed white space (**cws**) inputs in which every run of whitespace is replaced by a single space unless the run contains one or more newline characters, in which case the run is replaced by a single newline.
+For some inputs we provide compressed white space (**cws**) inputs in which every run of whitespace is replaced by a single space unless the run contains one or more newline characters, in which case the run is replaced by a single newline. 
 
 The purpose of the **cws** variants is again to normalise lexer performance so that long runs of whitespace do not introduce lexicalisation overheads for experiments that focus on parser performance. 
 
-## Running experiments
+The tokenisation process that produces the **tok** files automatically compresses white space.
+
+## Running bulk experiments
 
 The `runGTB` and `runART` scripts in **experiments** scan the entire **languages** directory structure, running experiments specified in **experiments/try** across all of the **str** and **tok** directories. 
 
@@ -61,9 +63,9 @@ You will need to edit `runGTB` and `runART` to specify the location of your GTB 
 
 2 .... *(more languages...)*
 
-2 .... java
-
 ---
+
+2 .... java
 
 3 ...... grammar
 
