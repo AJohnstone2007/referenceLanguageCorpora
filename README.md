@@ -13,6 +13,12 @@ See the README.md file in individual directories for details on how these corpor
 
 3. **experiments** contains scripts for running experiments using our own parser implementations, and data collected from those experiments.
 
+## 'str' and 'tok' variants
+
+The grammars and example inputs come in two flavours: tokenised and non-tokenised. Non-tokenised inputs are just normal example programs. The tokenised inputs have lexical keyword-only lexical structure in which lexical elements with more than one lexeme are replaced by a keyword. This means, for instance, that all identifiers in a Java program are replaced by the keyword ID, all integer constants by the keyword INTEGER, all string constants by the keyword STRING and so on.
+
+The purpose of the tokenised variants is to suppress the lexicalisation overhead for those algorithms that intermingle lexicalisation and parsing, enabling usto charaterise the parser runtimes independently of the lexical complexity.
+
 ## Directory structure
 
 The scripts in **experiments** scan the **languages** directory structure, running experiments across the whole repo which can be time consuming. You can suppress elements by moving them out of the directories that the scripts scan.
@@ -22,13 +28,15 @@ RLC root
 ---
 .. experiments
 
-....runGTB
+.... runGTB (scann directory stucture and run GTB stubs)
 
-....runART
+.... runART  (scan directory stucture and run ART stubs)
 
-......scripts
+...... scripts (contains partial ART and GTB scripts that are concatenated with grammars)
 
-........brnglr.gtb
+........ brnglr.gtb
+
+........ (more)
 
 ---
 
@@ -36,25 +44,25 @@ RLC root
 
 .... c
 
-......grammar
+...... grammar
 
-........ansic
+........ ansic
 
-..........str
+.......... str (grammars that include lexical rules)
 
-..........tok
+.......... tok (grammars that expect inputs to be 'tokenised')
 
-......corpus
+...... corpus
 
-........rhul
+........ rhul (examples from our research papers)
 
-..........doc
+.......... doc
 
-..........src
+.......... src
 
-..........str
+.......... str (inputs with full lexical structure)
 
-..........tok
+.......... tok ('tokenised' inputs)
 
 ## Other resources
  
