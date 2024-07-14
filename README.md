@@ -23,13 +23,15 @@ The purpose of the tokenised variants is to suppress the lexicalisation overhead
 
 For some inputs we provide compressed white space (**cws**) inputs in which every run of whitespace is replaced by a single space unless the run contains one or more newline characters, in which case the run is replaced by a single newline.
 
-The purpose of the **cws** variants is again to normalise lexer performance so that long runs of whitespace do not introduce lexicalisation overheads for experiments that focus on parser performance. If you want 'real world' performance figues, then use the full variants.  
+The purpose of the **cws** variants is again to normalise lexer performance so that long runs of whitespace do not introduce lexicalisation overheads for experiments that focus on parser performance. 
 
-## Directory structure
+## Running experiments
 
-The runGTB and runART scripts in **experiments** scan the entire **languages** directory structure, running experiments across all of the **str** and **tok** directories. 
+The runGTB and runART scripts in **experiments** scan the entire **languages** directory structure, running experiments specified in **experiments/scripts** 	across all of the **str** and **tok** directories. 
 
 A full run can be time consuming. You can suppress elements by moving them out of the directories that the scripts scan.
+
+**Directory structure**
 
 0 RLC root
 
@@ -43,7 +45,7 @@ A full run can be time consuming. You can suppress elements by moving them out o
 
 3 ...... **scripts** (contains partial ART and GTB scripts that are concatenated with grammars)
 
-4 ........ brnglr.gtb (script stub for runnig BRNGLR under GTB)
+4 ........ brnglr.gtb (script stub for running BRNGLR under GTB)
 
 4 ........ (more script stubs...)
 
@@ -63,13 +65,15 @@ A full run can be time consuming. You can suppress elements by moving them out o
 
 5 .......... doc (provenance)
 
-5 .......... **str** (grammars for jls13 that include lexical rules)
+5 .......... **str** (grammars for jls13 that include full lexical rules)
 
 5 .......... **tok** (grammars for jls13 that expect inputs to be 'tokenised')
 
 ---
 
 3 ...... corpus
+
+4 ........ (more corpora...)
 
 4 ........ rhul (examples from our research papers)
 
