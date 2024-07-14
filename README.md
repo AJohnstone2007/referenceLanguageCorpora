@@ -15,17 +15,23 @@ See the README.md file in individual directories for details on how these corpor
 
 ## 'str' and 'tok' variants
 
-The grammars and example inputs come in two flavours: tokenised (tok) and non-tokenised (str). Non-tokenised inputs are just normal example programs. The tokenised inputs have keyword-only lexical structure in which lexical elements with more than one lexeme are replaced by a keyword. This means, for instance, that all identifiers in a Java program are replaced by the keyword ID, all integer constants by the keyword INTEGER, all string constants by the keyword STRING and so on.
+The grammars and example inputs come in two flavours: tokenised (tok) and non-tokenised (str). Non-tokenised inputs are just normal example programs. The tokenised inputs have keyword-only lexical structure in which lexical elements whose pattern contains more than one lexeme are replaced by a keyword. This means, for instance, that all identifiers in a Java program are replaced by the keyword ID, all integer constants by the keyword INTEGER, all string constants by the keyword STRING and so on.
 
-The purpose of the tokenised variants is to suppress the lexicalisation overhead for those algorithms that intermingle lexicalisation and parsing, enabling us to charaterise the parser runtimes independently of the lexical complexity.
+The purpose of the tokenised variants is to suppress the lexicalisation overhead for those algorithms that intermingle lexicalisation and parsing, enabling us to characterise the parser runtimes independently of the lexical complexity.
+
+#### 'Full' and 'compressed white' space variants
+
+For some inputs we provide compressed white space (**cws**) inputs in which every run of whitespace is replaced by a single space unless the run contains one or more newline characters, in which case the run is replaced by a single newline.
+
+The purpose of the **cws** is again to normalise lexer performance so that long runs of whitespace do not introduce lexicalisation overheads for experiments that focus on parser performance. If you want 'real world' performance figues, then use the full variants.  
 
 ## Directory structure
 
-The scripts in **experiments** scan the **languages** directory structure, running experiments across the whole repo which can be time consuming. You can suppress elements by moving them out of the directories that the scripts scan.
+The runGTB and runART scripts in **experiments** scan the entire **languages** directory structure, running experiments across all of the **str* and **tok** directories. 
+
+A full run can be time consuming. You can suppress elements by moving them out of the directories that the scripts scan.
 
 0 RLC root
-
----
 
 ---
 
