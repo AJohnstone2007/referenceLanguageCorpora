@@ -27,11 +27,13 @@ The purpose of the **cws** variants is again to normalise lexer performance so t
 
 ## Running experiments
 
-The runGTB and runART scripts in **experiments** scan the entire **languages** directory structure, running experiments specified in **experiments/scripts** 	across all of the **str** and **tok** directories. 
+The runGTB and runART scripts in **experiments** scan the entire **languages** directory structure, running experiments specified in **experiments/try** across all of the **str** and **tok** directories. 
 
-A full run can be time consuming. You can suppress elements by moving them out of the directories that the scripts scan.
+The idea is that you load the **try**, **str** and **tok** directories with the elements that you want to characterise. After a run, the fule **log.csv** will contain summary statistics.
 
-**Directory structure**
+**A full run can be time consuming.**
+
+##Directory structure**
 
 0 RLC root
 
@@ -39,15 +41,17 @@ A full run can be time consuming. You can suppress elements by moving them out o
 
 1 .. experiments
 
-2 .... runGTB (scann directory stucture and run GTB stubs)
+2 .... runGTB (scan directory stucture and run GTB stubs)
 
 2 .... runART  (scan directory stucture and run ART stubs)
 
-3 ...... **scripts** (contains partial ART and GTB scripts that are concatenated with grammars)
+2 .... scripts (contains partial ART and GTB scripts that are concatenated with grammars)
 
-4 ........ brnglr.gtb (script stub for running BRNGLR under GTB)
+2 .... **try** subset of **scripts** to be used in experimental runs
 
-4 ........ (more script stubs...)
+3 ...... brnglr.gtb (script stub for running BRNGLR under GTB)
+
+3 ...... (more script stubs...)
 
 ---
 
@@ -91,9 +95,9 @@ A full run can be time consuming. You can suppress elements by moving them out o
  
 You may also find the following pages useful.
 
-* Our research papers at https://pure.royalholloway.ac.uk/en/persons/adrian-johnstone/publications
+* There is a large curated collection of 'official' language grammars at https://slebok.github.io/zoo/ (not owned or maintained by us)
 
-* There is a large curated collection of 'official' language grammars at https://slebok.github.io/zoo/ 
+* Our research papers at https://pure.royalholloway.ac.uk/en/persons/adrian-johnstone/publications
 
 * Our production tool Ambiguity Retained Translation (ART) at https://github.com/AJohnstone2007/ART
 
