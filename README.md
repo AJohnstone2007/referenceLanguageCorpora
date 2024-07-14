@@ -27,9 +27,11 @@ The purpose of the **cws** variants is again to normalise lexer performance so t
 
 ## Running experiments
 
-The runGTB and runART scripts in **experiments** scan the entire **languages** directory structure, running experiments specified in **experiments/try** across all of the **str** and **tok** directories. 
+The `runGTB` and `runART` scripts in **experiments** scan the entire **languages** directory structure, running experiments specified in **experiments/try** across all of the **str** and **tok** directories. 
 
 The idea is that you load the **try**, **str** and **tok** directories with the elements that you want to characterise. After a run, the file **log.csv** will contain summary statistics.
+
+You will need to edit `runGTB` and `runART` to specify the location of your GTB executables and your ART JAR. You can also specify the number of times each experiment is run; we use this to get 10 results for each experiment so as to smooth out timing irregularities by discarding four outliers and taking the mean runtimes of the remaining six.
 
 **A full run can be time consuming.**
 
