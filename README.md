@@ -15,11 +15,22 @@ See the README.md file in individual directories for details on how these corpor
 
 ## Directory structure
 
-The scripts in **experiments** scan the directory structure, running experiments across the whole repo which can be time consuming. You can suppress elements by moving them out of the directories that the scripts scan.
+The scripts in **experiments** scan the **languages** directory structure, running experiments across the whole repo which can be time consuming. You can suppress elements by moving them out of the directories that the scripts scan.
 
 RLC root
 
+---
 .. experiments
+
+....runGTB
+
+....runART
+
+......scripts
+
+........brnglr.gtb
+
+---
 
 .. languages
 
