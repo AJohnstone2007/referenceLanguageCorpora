@@ -27,6 +27,8 @@ The scripts in **experiments** scan the **languages** directory structure, runni
 
 ---
 
+---
+
 1 .. experiments
 
 2 .... runGTB (scann directory stucture and run GTB stubs)
@@ -45,29 +47,31 @@ The scripts in **experiments** scan the **languages** directory structure, runni
 
 2 .... java
 
-...... grammar
+3 ...... grammar
 
-........ jls13 (a specific grammar version)
+4 ........ jls13 (a specific grammar version)
 
-.......... doc (the provenance of this grammar)
+5 .......... doc (the provenance of this grammar)
 
-.......... **str** (grammars that include lexical rules)
+5 .......... **str** (grammars that include lexical rules)
 
-.......... **tok** (grammars that expect inputs to be 'tokenised')
+5 .......... **tok** (grammars that expect inputs to be 'tokenised')
 
-...... corpus
+---
 
-........ rhul (examples from our research papers)
+3 ...... corpus
 
-.......... doc (the provenance of these inputs)
+4 ........ rhul (examples from our research papers)
 
-.......... src (the original version of each input)
+5 .......... doc (the provenance of these inputs)
 
-.......... cws (compressed white space version of each input)
+5 .......... src (the original version of each input)
 
-.......... **str** (inputs with full lexical structure)
+5 .......... cws (compressed white space version of each input)
 
-.......... **tok** ('tokenised' inputs)
+5 .......... **str** (inputs with full lexical structure)
+
+5 .......... **tok** ('tokenised' inputs)
 
 ## Other resources
  
