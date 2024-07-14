@@ -15,7 +15,7 @@ set GTB=\csle\dev\art\old\gtb\bin
 rem set COUNT to the number of iterations of each experiment
 set COUNT=1
 
-set SCR=scripts
+set TRY=try
 set LNG=..\languages
 set LOG=log.csv
 
@@ -23,24 +23,24 @@ echo binary,#,grammar,string,length,algorithm,result,TLex,TParse,TChoose,TSelect
 
 rem iterate over langage directories
 FOR /D %%L IN (%LNG%\*) DO (
-      echo *1 %%~nL%
+rem      echo *1 %%~nL%
 
 rem iterate over corpora directories
   FOR /D %%C IN (%%L%\corpus\*) DO (
-   echo *2 %%~nC%
+rem   echo *2 %%~nC%
 
 rem iterate over GTB executables
     FOR %%B IN (%GTB%\*.exe) DO (
 rem    echo *3 %%~nB%
 
 rem iterate over GTB script stubs
-      FOR %%T IN (%SCR%\*.gtb) DO (
+      FOR %%T IN (%TRY%\*.gtb) DO (
 rem      echo *4 %%~nT%
 
 
 rem iterate over grammar variant directories
         FOR /D %%G IN (%%L%\grammar\*) DO (
-         echo *5 %%~nG%
+rem         echo *5 %%~nG%
 
 rem iterate over token grammar variant versions
           FOR %%V IN (%%G%\tok\*.gtb) DO (
