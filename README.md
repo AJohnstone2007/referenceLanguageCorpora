@@ -6,7 +6,7 @@ This collection is curated by Adrian Johnstone and Elizabeth Scott of the Centre
 
 ## Subdirectories
 
-1. **languages** contains grammars and example inputs for well some well-known general purpose languages. The **rhul** subfolders contain examples that we have used in many of our research papers. For some languages we have also included large sets of examples drawn from publicly available repositories: we thank the owners of those repos for making the material available.
+1. **languages** contains grammars and example inputs for well some well-known general purpose languages. The **rhul** subfolders contain examples that we have used in many of our research papers. For some languages we have also included large sets of examples drawn from publicly available repositories: we thank the owners for making the material available.
 See the README.md file in individual directories for details on how these corpora were constructed.
 
 2. **languages/ambiguityTest** contains 'torture' grammars designed to stress-test generalised parsing algorithms.
@@ -23,11 +23,11 @@ The purpose of the tokenised variants is to suppress the lexicalisation overhead
 
 For some inputs we provide compressed white space (**cws**) inputs in which every run of whitespace is replaced by a single space unless the run contains one or more newline characters, in which case the run is replaced by a single newline.
 
-The purpose of the **cws** is again to normalise lexer performance so that long runs of whitespace do not introduce lexicalisation overheads for experiments that focus on parser performance. If you want 'real world' performance figues, then use the full variants.  
+The purpose of the **cws** variants is again to normalise lexer performance so that long runs of whitespace do not introduce lexicalisation overheads for experiments that focus on parser performance. If you want 'real world' performance figues, then use the full variants.  
 
 ## Directory structure
 
-The runGTB and runART scripts in **experiments** scan the entire **languages** directory structure, running experiments across all of the **str* and **tok** directories. 
+The runGTB and runART scripts in **experiments** scan the entire **languages** directory structure, running experiments across all of the **str** and **tok** directories. 
 
 A full run can be time consuming. You can suppress elements by moving them out of the directories that the scripts scan.
 
@@ -43,25 +43,29 @@ A full run can be time consuming. You can suppress elements by moving them out o
 
 3 ...... **scripts** (contains partial ART and GTB scripts that are concatenated with grammars)
 
-4 ........ brnglr.gtb
+4 ........ brnglr.gtb (script stub for runnig BRNGLR under GTB)
 
-4 ........ (more)
+4 ........ (more script stubs...)
 
 ---
 
 1 .. languages
 
+2 .... (more languages...)
+
 2 .... java
 
 3 ...... grammar
 
-4 ........ jls13 (a specific grammar version)
+4 ........ (more grammars for java...)
 
-5 .......... doc (the provenance of this grammar)
+4 ........ jls13 (grammars for a specific language version)
 
-5 .......... **str** (grammars that include lexical rules)
+5 .......... doc (provenance)
 
-5 .......... **tok** (grammars that expect inputs to be 'tokenised')
+5 .......... **str** (grammars for jls13 that include lexical rules)
+
+5 .......... **tok** (grammars for jls13 that expect inputs to be 'tokenised')
 
 ---
 
@@ -83,10 +87,12 @@ A full run can be time consuming. You can suppress elements by moving them out o
  
 You may also find the following pages useful.
 
-* Our production tool Ambiguity Retained Translation (ART) at https://github.com/AJohnstone2007/ART
-
 * Our research papers at https://pure.royalholloway.ac.uk/en/persons/adrian-johnstone/publications
 
 * There is a large curated collection of 'official' language grammars at https://slebok.github.io/zoo/ 
+
+* Our production tool Ambiguity Retained Translation (ART) at https://github.com/AJohnstone2007/ART
+
+You will find source code and pre-built executables for GTB and the tokenisers that produce our **tok** variants in the **old** directory of the ART repository.
 
 Adrian Johnstone, July 2024
