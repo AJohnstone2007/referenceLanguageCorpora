@@ -15,9 +15,9 @@ See the README.md file in individual directories for details on how these corpor
 
 ## 'str' and 'tok' variants
 
-The grammars and example inputs come in two flavours: tokenised and non-tokenised. Non-tokenised inputs are just normal example programs. The tokenised inputs have lexical keyword-only lexical structure in which lexical elements with more than one lexeme are replaced by a keyword. This means, for instance, that all identifiers in a Java program are replaced by the keyword ID, all integer constants by the keyword INTEGER, all string constants by the keyword STRING and so on.
+The grammars and example inputs come in two flavours: tokenised (tok) and non-tokenised (str). Non-tokenised inputs are just normal example programs. The tokenised inputs have keyword-only lexical structure in which lexical elements with more than one lexeme are replaced by a keyword. This means, for instance, that all identifiers in a Java program are replaced by the keyword ID, all integer constants by the keyword INTEGER, all string constants by the keyword STRING and so on.
 
-The purpose of the tokenised variants is to suppress the lexicalisation overhead for those algorithms that intermingle lexicalisation and parsing, enabling usto charaterise the parser runtimes independently of the lexical complexity.
+The purpose of the tokenised variants is to suppress the lexicalisation overhead for those algorithms that intermingle lexicalisation and parsing, enabling us to charaterise the parser runtimes independently of the lexical complexity.
 
 ## Directory structure
 
@@ -32,7 +32,7 @@ RLC root
 
 .... runART  (scan directory stucture and run ART stubs)
 
-...... scripts (contains partial ART and GTB scripts that are concatenated with grammars)
+...... **scripts** (contains partial ART and GTB scripts that are concatenated with grammars)
 
 ........ brnglr.gtb
 
@@ -42,27 +42,31 @@ RLC root
 
 .. languages
 
-.... c
+.... java
 
 ...... grammar
 
-........ ansic
+........ jls13 (a specific grammar version)
 
-.......... str (grammars that include lexical rules)
+.......... doc (the provenance of this grammar)
 
-.......... tok (grammars that expect inputs to be 'tokenised')
+.......... **str** (grammars that include lexical rules)
+
+.......... **tok** (grammars that expect inputs to be 'tokenised')
 
 ...... corpus
 
 ........ rhul (examples from our research papers)
 
-.......... doc
+.......... doc (the provenance of these inputs)
 
-.......... src
+.......... src (the original version of each input)
 
-.......... str (inputs with full lexical structure)
+.......... cws (compressed white space version of each input)
 
-.......... tok ('tokenised' inputs)
+.......... **str** (inputs with full lexical structure)
+
+.......... **tok** ('tokenised' inputs)
 
 ## Other resources
  
