@@ -23,26 +23,27 @@ The purpose of the tokenised variants is to suppress the lexicalisation overhead
 
 The scripts in **experiments** scan the **languages** directory structure, running experiments across the whole repo which can be time consuming. You can suppress elements by moving them out of the directories that the scripts scan.
 
-RLC root
-
----
-.. experiments
-
-.... runGTB (scann directory stucture and run GTB stubs)
-
-.... runART  (scan directory stucture and run ART stubs)
-
-...... **scripts** (contains partial ART and GTB scripts that are concatenated with grammars)
-
-........ brnglr.gtb
-
-........ (more)
+0 RLC root
 
 ---
 
-.. languages
+1 .. experiments
 
-.... java
+2 .... runGTB (scann directory stucture and run GTB stubs)
+
+2 .... runART  (scan directory stucture and run ART stubs)
+
+3 ...... **scripts** (contains partial ART and GTB scripts that are concatenated with grammars)
+
+4 ........ brnglr.gtb
+
+4 ........ (more)
+
+---
+
+1 .. languages
+
+2 .... java
 
 ...... grammar
 
