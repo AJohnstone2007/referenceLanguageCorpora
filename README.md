@@ -43,13 +43,13 @@ You will need to edit `runGTB` and `runART` to specify the location of your GTB 
 
 1 .. experiments
 
+2 .... scripts *(a collection of ART and GTB stub scripts that are concatenated with grammars)*
+
 2 .... `runGTB` *(script to scan directory stucture and run GTB stub scripts)*
 
 2 .... `runART`  *(script to scan directory stucture and run ART stub scripts)*
 
-2 .... scripts *(a collection of ART and GTB stub scripts that are concatenated with grammars)*
-
-2 .... **try** *(a subset of stub scripts to be used in the next experimental run)*
+2 .... **try** *(the subset of stub scripts to be used in the next run)*
 
 3 ...... brnglr.gtb *(example script stub for running BRNGLR under GTB)*
 
@@ -69,19 +69,19 @@ You will need to edit `runGTB` and `runART` to specify the location of your GTB 
 
 4 ........ *(more grammars for java...)*
 
-4 ........ jls13 *(grammars for this specific language version)*
+4 ........ jls18 *(grammars from the Java Language Specification version 18)*
 
 5 .......... doc *(provenance)*
 
-5 .......... **str** *(grammars for jls13 that include full lexical rules)*
+5 .......... **str** *(grammars for jls18 that include full lexical rules)*
 
-5 .......... **tok** *(grammars for jls13 that expect inputs to be 'tokenised')*
+5 .......... **tok** *(grammars for jls18 that expect inputs to be 'tokenised')*
 
 3 ...... corpus
 
 4 ........ *(more corpora for Java...)*
 
-4 ........ C1 *(a specific corpus for Java)*
+4 ........ jfx	 *(a specific corpus for Java)*
 
 5 .......... doc *(the provenance of these inputs)*
 
