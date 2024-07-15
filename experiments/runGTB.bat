@@ -23,7 +23,7 @@ rem allow the !time! and !date! variable expansions so that we get current date 
 SetLocal EnableDelayedExpansion
 
 rem write header line to log
-echo time stamp,tool,script,#,language,grammar,string,length,algorithm,result,TLex,TLChoose,TParse,TPChoose,TSelect,TTerm,tweN,tweE,lexes,GSS SN,GSS EN,GGS E,SPPF Eps,SPPF T,SPPF NT,SPPF Inter,SPPF PN,SPPF Edge,Pool,H0,H1,H2,H3,H4,H5,H6+ > %log%
+echo tool,script,#,language,grammar,string,length,algorithm,result,TLex,TLChoose,TParse,TPChoose,TSelect,TTerm,tweN,tweE,lexes,GSS SN,GSS EN,GGS E,SPPF Eps,SPPF T,SPPF NT,SPPF Inter,SPPF PN,SPPF Edge,Pool,H0,H1,H2,H3,H4,H5,H6+ > %log%
 
 rem iterate over langage directories
 FOR /D %%L IN (%LNG%\*) DO (
@@ -64,7 +64,7 @@ rem                echo *8 %%~nN%
                 echo !date!-!time!,%%~nB,%%~nT%%~xT,%%N,%%~nL,%%~nG/%%~nV,%%~nC/%%~nS%%~xS
 
 rem Comment out the line below if you just want to see which files will be processed without actually running GTB
-                %%B -C!date!-!time!,%%~nB,%%~nT%%~xT,%%N,%%~nL,%%~nG/%%~nV,%%~nC/%%~nS%%~xS test.gtb >> %LOG%
+                %%B -C%%~nB,%%~nT%%~xT,%%N,%%~nL,%%~nG/%%~nV,%%~nC/%%~nS%%~xS test.gtb >> %LOG%
               )
             )
           )
