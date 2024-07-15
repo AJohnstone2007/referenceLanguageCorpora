@@ -1,0 +1,4 @@
+S ::= 'b' | S S | S S S .
+
+(
+this_grammar := grammar[S]

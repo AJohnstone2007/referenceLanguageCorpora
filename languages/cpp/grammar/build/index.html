@@ -1,0 +1,122 @@
+<html>
+<head>
+<title>C++ grammars</title>
+<link rel=stylesheet type="text/css" href="../ajstyle.css">
+</head>
+<body>
+<H1>C++</H1>
+C++ is a large language based on <A href="../c/index.html"> C</A> that
+adds classes (with both statically and dynamically despatched methods,
+and allowing multiple inheritance); exception handling; generic
+programming through templates; operator overloading and a standard
+library of container classes and algorithms. The language (originally
+called 'C with classes') was developed by Bjarne Stroustrup at Bell
+Labs starting in 1979.
+<P>
+The history of C++ is described by Stroustrup in a paper from the <A
+href="http://en.wikipedia.org/wiki/HOPL"> HoPL II</A> (History of
+Programming Languages II) conference which you can read <A
+href="http://www.research.att.com/~bs/hopl2.pdf">here</A>. That paper
+was subsequently extended to a full length book: 'The Design and
+Evolution of C++', Bjarne Stroustrup; Addison Wesley; 1994 ISBN
+0-201-54330-3.
+<P>
+A notable of feature of C++ is it's ongoing evolution. Commercial
+and free compilers for C++ have at various points in its history both
+lagged and led the standardisation efforts which can lead to a lot of
+confusion.
+<P>
+Broadly, at the time of writing (October 2006) there are seven generations of C++.
+<ol>
+<li> <STRONG>[Pre-1985: C with classes]</STRONG> Stroustrup originally
+focussed on adding abstract data types to C by using the class
+concept pioneered by Simula. Inheritance was supported, but not
+virtual functions, and hence there was no runtime polymorphism. Most
+people (including Stroustrup) would not call such a language object
+oriented. This language was internal to Bell Labs.
+<P>
+<li> <STRONG>[1985: Cfront Release 1.0]</STRONG> The first commercial
+release of the renamed C++ was in 1985. Virtual functions had been
+added and C++ was marketed as an object oriented
+extension to C. C++ remains essentially a superset of <A
+href="../c/index.html">C90</A> (although there are some subtle
+incompatibilities for all you language lawyers out there).
+<P>
+This version is described in 'The C++ programming Language', Bjarne
+Stroustrup; Addison Wesley; 1986 ISBN 0-210-12078-X.
+<P>
+<li> <STRONG>[1989: Cfront Release 2.0]</STRONG> The second release
+added multiple inheritance, abstract classes and a large number of
+other features such as pointers to members.
+<P>
+<li> <STRONG>[1990: The
+annotated reference manual (ARM)]</STRONG> This was not a language
+version <em>per se</em> but a document which was to become the basis
+of the standardisation effort. Published as 'The Annotated C++
+Reference Manual', Margaret A. Ellis and Bjarne Stroustrup; Adison
+Wesley; 1990 ISBN 0-210-51459-1, the ARM described both the features
+of Release 2.0 and features that had not yet been implemented,
+including exceptions and templates. It is really both an informal
+standards document and a roadmap for future development. <li>
+<P>
+<STRONG>[1991: Cfront Release 3.0]</STRONG> The third release
+incorporated features from the ARM, including templates for generic
+programming and exception handling.
+<P>
+This version is described in 'The C++ programming Language, second edition', Bjarne
+Stroustrup; Addison Wesley; 1991 ISBN 0-210-53992-6.
+<P>
+<li> <STRONG>[1998: C++98 (ISO/IEC 14882:1998)]</STRONG> ANSI
+established committee X3J16 to standardise C++ in 1989. The final
+draft standard was put out to public vote in 1997, and ratified in
+1998. A corrected standard was published in 2003 as ISO/IEC 14882:2003.
+<P>
+This version is described in 'The C++ programming Language (Special Edition)', Bjarne
+Stroustrup; Addison Wesley; 2000 ISBN 0-201-70073-5 and in 'The C++ programming Language (Third Edition)', Bjarne
+Stroustrup; Addison Wesley; 1997 ISBN 0-201-88954-4. The 'Special
+Edition' is hardbound and contains two extra appendices and a large
+number of typographical fixes.
+<P>
+This is the grammar from Annex A of the 1997 public review
+document. Since this draft was unanimously accepted, we believe that
+it is the same grammar as in the actual standard, but we have not yet
+checked against an official copy.
+<P>
+<A href="ansi_cpp_prd97/ansi_cpp_prd97.raw">ansi_cpp_prd97.raw</A> raw grammar from
+the typeset document<BR>
+<A href="ansi_cpp_prd97/ansi_cpp_prd97.gex">ansi_cpp_prd97.gex</A> grammar
+rules extracted using gramex V1.2
+<P>
+<li> <STRONG>[200x: C++0x (ISO WG 21 C++0x draft standard)]</STRONG>
+Standardisation efforts continue. Most people expect only small
+changes to the language, but significant extensions to the
+library. For Stroustrup's own take on things, see
+<A href="http://www.research.att.com/~bs/rules.pdf">The design of C++0x</A>.
+You can keep up with the current thinking by checking the
+<A href="http://www.open-std.org/jtc1/sc22/wg21"> WG21 committee pages<A>.
+<P>
+The main output so far has been
+'Technical Report 1' which concerns proposed extensions to the
+library, which include regular expressions, safe pointers and better
+random number generation facilities.
+<P>
+This is the grammar from Annex A of the 2005 draft standard.
+<P>
+<A href="ansi_cpp_draft_2005/ansi_cpp_draft_2005.raw">ansi_cpp_draft_2005.raw</A> raw grammar from
+the typeset document<BR>
+<A href="ansi_cpp_draft_2005/ansi_cpp_draft_2005.gex">ansi_cpp_draft_2005.gex</A> grammar
+rules extracted using gramex V1.2
+<P>
+This is the grammar from Annex A of the 2006 draft standard.
+<P>
+<A href="ansi_cpp_draft_2006/ansi_cpp_draft_2006.raw">ansi_cpp_draft_2006.raw</A> raw grammar from
+the typeset document<BR>
+<A href="ansi_cpp_draft_2006/ansi_cpp_draft_2006.gex">ansi_cpp_draft_2006.gex</A> grammar
+rules extracted using gramex V1.2
+</ol>
+For an interesting perspective on C++ syntax (which many find ugly)
+see <A
+href="http://www.csse.monash.edu.au/~damian/papers/PDF/ModestProposal.pdf">
+A Modest Proposal: C++ Resyntaxed</A> by Bern Werther and Damian Conway.
+</body>
+</html>
