@@ -1,0 +1,5 @@
+tilde[this_grammar terminal]
+this_ah_table := ah_table[this_grammar]
+ah_recognise[this_ah_table open["test.str" read_text]]
+)
+
