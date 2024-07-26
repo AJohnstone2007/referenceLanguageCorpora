@@ -1,3 +1,0 @@
-this_derivation := earley_parse[this_grammar open["test.str" read_text]]
-)
-
