@@ -6,12 +6,10 @@ This collection is curated by Adrian Johnstone and Elizabeth Scott of the Centre
 
 ## Subdirectories
 
-1. **languages** contains grammars and example inputs for well some well-known general purpose languages. The **rhul** subfolders contain examples that we have used in many of our research papers. For some languages we have also included large sets of examples drawn from publicly available repositories: we thank the owners for making the material available.
+**languages** contains grammars and example inputs for well some well-known general purpose languages. The **rhul** subfolders contain examples that we have used in many of our research papers. For some languages we have also included large sets of examples drawn from publicly available repositories: we thank the owners for making the material available.
 See the README.md file in individual directories for details on how these corpora were constructed.
 
-2. **languages/ambiguityTest** contains 'torture' grammars designed to stress-test generalised parsing algorithms.
-
-3. **experiments** contains scripts for running experiments using our own parser implementations, and data collected from those experiments.
+**experiments** contains scripts for running experiments using our own parser implementations, and data collected from those experiments.
 
 ## 'str' and 'tok' variants
 
@@ -47,7 +45,7 @@ You will need to edit `runGTB` and `runART` to specify the location of your GTB 
 
 2 .... scripts *(a collection of ART and GTB stub scripts that are concatenated with grammars)*
 
-2 .... log *(results from experimental runs)*	
+2 .... results *(results from experimental runs)*	
 
 2 .... `runGTB` *(script to scan directory stucture and run GTB stub scripts)*
 
@@ -77,9 +75,11 @@ You will need to edit `runGTB` and `runART` to specify the location of your GTB 
 
 5 .......... doc *(provenance)*
 
-5 .......... **str** *(grammars for jls18 that include full lexical rules)*
+5 .......... **str** *(grammar group for jls18 that include full lexical rules)*
 
-5 .......... **tok** *(grammars for jls18 that expect inputs to be 'tokenised')*
+5 .......... **tok** *(grammar group for jls18 that expect inputs to be 'tokenised')*
+
+5 .......... **bulk** *(grammar group for jls18 that is used for bulk tests)*
 
 3 ...... corpus
 
@@ -93,9 +93,11 @@ You will need to edit `runGTB` and `runART` to specify the location of your GTB 
 
 5 .......... cws *(compressed white space version of each input)*
 
-5 .......... **str** *(inputs to be scanned with full lexical structure)*
+5 .......... **str** *(input group to be scanned with full lexical structure)*
 
-5 .......... **tok** *('tokenised' inputs to be scanned)*
+5 .......... **tok** *('tokenised' input group)*
+
+5 .......... **bulk** *(buk input group)*
 
 ## Other resources
  
