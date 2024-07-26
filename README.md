@@ -25,15 +25,9 @@ The purpose of the **cws** variants is again to normalise lexer performance so t
 
 The tokenisation process that produces the **tok** files automatically compresses white space.
 
-## Running bulk experiments
+## Running experiments
 
-The `runGTB` and `runART` scripts in **experiments** scan the entire **languages** directory structure, running experiments specified in **experiments/try** across all of the **str** and **tok** directories. 
-
-The idea is that you load the **try**, **str** and **tok** directories with the elements that you want to characterise. After a run, the file **log.csv** will contain summary statistics.
-
-You will need to edit `runGTB` and `runART` to specify the location of your GTB executables and your ART JAR. You can also specify the number of times each experiment is run; we use this to get 10 results for each experiment so as to smooth out timing irregularities by discarding the two fastest and two slowest runs,and then taking the mean runtimes of the remaining six.
-
-**A full run can be time consuming.**
+`RunExp.java` in **experiments** scans the entire **languages** directory structure, running experiments specified in **experiments/try**. 
 
 ## Directory structure
 
@@ -47,15 +41,9 @@ You will need to edit `runGTB` and `runART` to specify the location of your GTB 
 
 2 .... results *(results from experimental runs)*	
 
-2 .... `runGTB` *(script to scan directory stucture and run GTB stub scripts)*
+2 .... `RunExp.java` *(Scan directory stucture and run experiments)*
 
-2 .... `runART`  *(script to scan directory stucture and run ART stub scripts)*
-
-2 .... **try** *(the subset of stub scripts to be used in the next run)*
-
-3 ...... brnglr.gtb *(example script stub for running BRNGLR under GTB)*
-
-3 ...... *(more script stubs...)*
+2 .... **try** *(the subset of scripts to be used in the next run)*
 
 ---
 
