@@ -51,15 +51,16 @@ public class RunExp {
       Files.deleteIfExists(Paths.get(logFileName));
       log = new File(logFileName);
       appendTo(log,
-          "line,date,time,tool,script,iter,language,grammar,string,length,algorithm,result," + "TLex,TLChoose,TParse,TPChoose,TSelect,TTerm,tweN,tweE,lexes,"
+          "line,date,time,tool,script,iter,language,grammar,string,length,algorithm,result,status,"
+              + "TInit,TLex,TLChoose,TParse,TPChoose,TSelect,TTerm,TSem,tweN,tweE,lexes,"
               + "GSS SN,GSS EN,GGS E,SPPF Eps,SPPF T,SPPF NT,SPPF Inter,SPPF PN,SPPF Edge,Pool,H0,H1,H2,H3,H4,H5,H6+\n");
     }
 
     for (var s : getFiles(rlc + "/experiments/try/scripts"))
       for (var l : getFiles(rlc + "/languages"))
-        for (var a : groups)
-          for (var g : getFiles(l + "/grammar"))
-            for (var c : getFiles(l + "/corpus"))
+        for (var g : getFiles(l + "/grammar"))
+          for (var c : getFiles(l + "/corpus"))
+            for (var a : groups)
               for (var gg : getFiles(g + "/" + a))
                 for (var cc : getFiles(c + "/" + a))
                   for (int i = 0; i < count; i++)
@@ -68,23 +69,39 @@ public class RunExp {
                       if (!gg.toString().endsWith("art")) continue;
                       fileCat("test.str", cc);
                       fileCat("test.art", gg, s);
-                      for (var t : getFiles(rlc + "/experiments/try/tools/art")) {
+                      var tf = getFiles(rlc + "/experiments/try/tools/art");
+                      if (tf.length == 0) fatal("Script " + gg + " requires ART, but no relevant tools found");
+                      for (var t : tf) {
                         logExperiment(i, s, l, a, g, c, gg, cc, t);
                         execute(log, "java", "-jar", t.toString(), "noFX", "test.art");
+                      }
+                      break;
+                    case "artv3":
+                      if (!gg.toString().endsWith("art")) continue;
+                      fileCat("test.str", cc);
+                      fileCat("test.art", gg, s);
+                      tf = getFiles(rlc + "/experiments/try/tools/art");
+                      if (tf.length == 0) fatal("Script " + gg + " requires ART, but no relevant tools found");
+                      for (var t : tf) {
+                        logExperiment(i, s, l, a, g, c, gg, cc, t);
+                        execute(log, "java", "-jar", t.toString(), "v3", "test.art", "test.str");
                       }
                       break;
                     case "gtb":
                       if (!gg.toString().endsWith("gtb")) continue;
                       fileCat("test.str", cc);
                       fileCat("test.gtb", gg, s);
+                      tf = getFiles(rlc + "/experiments/try/tools/gtb");
+                      if (tf.length == 0) fatal("Script " + gg + " requires GTB, but no relevant tools found");
                       for (var t : getFiles(rlc + "/experiments/try/tools/gtb")) {
                         logExperiment(i, s, l, a, g, c, gg, cc, t);
                         execute(log, t.toString(), "test.gtb");
                       }
                       break;
                     case "bat":
+                      if (!gg.toString().endsWith("art")) continue;
                       fileCat("test.str", cc);
-                      fileCat("test.art", gg, s);
+                      fileCat("test.art", gg);
                       logExperiment(i, s, l, a, g, c, gg, cc, null);
                       Scanner scanner = new Scanner(s);
                       while (scanner.hasNext()) {
@@ -103,11 +120,11 @@ public class RunExp {
   }
 
   public void logExperiment(int iteration, File s, File l, String a, File g, File c, File gg, File cc, File t) throws IOException {
-    System.out.println(line + " " + dtf.format(LocalDateTime.now(ZoneId.systemDefault())) + " " + (t == null ? "batch" : t.getName()) + " " + s.getName() + " "
+    System.out.println(line + " " + dtf.format(LocalDateTime.now(ZoneId.systemDefault())) + " " + (t == null ? "script" : t.getName()) + " " + s.getName() + " "
         + l.getName() + " " + g.getName() + "/" + a + "/" + gg.getName() + " " + c.getName() + "/" + a + "/" + cc.getName() + " " + iteration);
     if (log != null)
-      appendTo(log, (line++) + "," + dtf.format(LocalDateTime.now(ZoneId.systemDefault())) + "," + (t == null ? "batch" : t.getName()) + "," + s.getName() + ","
-          + iteration + "," + l.getName() + "," + g.getName() + "/" + a + "/" + gg.getName() + "," + c.getName() + "/" + a + "/" + cc.getName() + ",");
+      appendTo(log, (line++) + "," + dtf.format(LocalDateTime.now(ZoneId.systemDefault())) + "," + (t == null ? "script" : t.getName()) + "," + s.getName()
+          + "," + iteration + "," + l.getName() + "," + g.getName() + "/" + a + "/" + gg.getName() + "," + c.getName() + "/" + a + "/" + cc.getName() + ",");
   }
 
   private void appendTo(File f, String string) throws IOException {
