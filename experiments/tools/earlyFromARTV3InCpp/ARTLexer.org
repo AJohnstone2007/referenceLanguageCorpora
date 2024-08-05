@@ -3,7 +3,7 @@
 #include<ctype.h>
 #include<string.h>
 
-  bool isSubstringAt(const char* full, int start, const char* sub) {
+   bool isSubstringAt(const char* full, int start, const char* sub) {
     int subStart = 0;
 
     while (full[start] != 0 && sub[subStart] != 0 && full[start] == sub[subStart]) {
@@ -14,7 +14,7 @@
     return sub[subStart] == 0;
   }
 
-  const char* stringToString(const char* c) {
+   const char* charsToString(const char* c) {
     const char* ret = "";
     for (int i = 0; c[i] != 0; i++)
       ret += c[i];
@@ -25,7 +25,7 @@
     int* dynamicLexicaliseLongestMatch(const char* input, int startIndex) {
     // End of language customisation
 
-    inputStringLength = strlen(input);
+    int inputStringLength = strlen(input);
     int* ret = NULL;
     int stringStart, retIndex;
 

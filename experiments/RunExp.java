@@ -52,8 +52,8 @@ public class RunExp {
       log = new File(logFileName);
       appendTo(log,
           "line,date,time,tool,script,iter,language,grammar,string,length,algorithm,result,status,"
-              + "TInit,TLex,TLChoose,TParse,TPChoose,TSelect,TTerm,TSem,tweN,tweE,lexes,"
-              + "GSS SN,GSS EN,GGS E,SPPF Eps,SPPF T,SPPF NT,SPPF Inter,SPPF PN,SPPF Edge,Pool,H0,H1,H2,H3,H4,H5,H6+\n");
+              + "TSetup,TLex,TLChoose,TParse,TPChoose,TSelect,TTerm,TSem,tweN,tweE,lexes,MStart,MEnd,PStart,PEnd,PAllocated,H0,H1,H2,H3,H4,H5,H6+,"
+              + "GSS SN,GSS EN,GGS E,SPPF Eps,SPPF T,SPPF NT,SPPF Inter,SPPF PN,SPPF Edge\n");
     }
 
     for (var s : getFiles(rlc + "/experiments/try/scripts"))

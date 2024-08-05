@@ -1,62 +1,44 @@
 #include<stdlib.h>
 #include<stdio.h>
 #include<ctype.h>
-#define String const char*
-#define public
-#define private
-#define static
-#define final
-#define boolean bool
-#define null NULL
-#define throws
-#define FileNotFoundException
 //#define ARTTRACE
 
-//#include "ARTStaticSlotArray.cpp"
 #include "ARTStaticEarleyTable.h"
-#include "ARTPool.cpp"
-#include "ARTLexer.cpp"
 #include "ARTMain.cpp"
 
-extern boolean artIsInLanguage;
-extern bool artIsInadmissable;
-extern int artStartTime;
-extern int artSetupTime;
-extern int artLexTime;
-extern int artParseTime;
 int rSetRemovals;
-private final int earleyItemPerLevelBucketCount = 809;
-private final int upsilonBucketCount = 2000011;
+ int earleyItemPerLevelBucketCount = 809;
+ int upsilonBucketCount = 2000011;
 
   // An Earley configuration is nfaVertex x inputIndex, that is a 2:0
-  private final int earleyConfigurationNFAVertexOffset = 0;
-  private final int earleyConfigurationInputIndexOffset = 1;
+    int earleyConfigurationNFAVertexOffset = 0;
+    int earleyConfigurationInputIndexOffset = 1;
 
   // An Earley Table Chi Set element is ChiSetIndex x i X j X k, that is a 4:0
-  private final int chiSetElementIndex = 0;
-  private final int chiSetElementI = 1;
-  private final int chiSetElementK = 2;
-  private final int chiSetElementJ = 3;
+    int chiSetElementIndex = 0;
+    int chiSetElementI = 1;
+    int chiSetElementK = 2;
+    int chiSetElementJ = 3;
 
-  private int upsilon;
-  private int inputLength;
+   int upsilon;
+   int inputLength;
 
-  private int *R;
-  private int *E;
-  private int *EList;
-  private int *rdn;
+   int *R;
+   int *E;
+   int *EList;
+   int *rdn;
 
-  private void add(int h, int x, int i, int k, int j, int t) {
+   void add(int h, int x, int i, int k, int j, int t) {
     if (x == eoS) return;
 
     int* tmpChiSet = chiSetCache[epnMap[h][x]];
-    if (tmpChiSet != null && *tmpChiSet != 0) { // skip if cache element is empty
+    if (tmpChiSet != NULL && *tmpChiSet != 0) { // skip if cache element is empty
       // printf("Adding to Upsilon via epn (%i, %i, %i, %i)\n", epnMap[h][x], i, k, j);
       mapFind_4_0(upsilon, epnMap[h][x], i, k, j);
       // upsilon.add(new ARTChiBSR(epnMap[h][x], i, k, j));
     }
     tmpChiSet = chiSetCache[eeMap[h][x]];
-    if (tmpChiSet != null && *tmpChiSet != 0) { // skip if cache element is empty
+    if (tmpChiSet != NULL && *tmpChiSet != 0) { // skip if cache element is empty
       mapFind_4_0(upsilon, eeMap[h][x], i, j, j);
       //      printf("Adding to Upsilon via ee (%i, %i, %i, %i)\n", eeMap[h][x], i, j, j);
       // upsilon.add(new ARTChiBSR(eeMap[h][x], i, j, j));
@@ -77,14 +59,17 @@ private final int upsilonBucketCount = 2000011;
     }
   }
 
-  void artParse(String stringInput, String inputFilename) {
-    artParseAlgorithm = "EarleyTableIndexedPool (C++)";
-    boolean useRDNSet = true;
+  void artParse(const char* stringInput, const char* inputFilename) {
+    bool useRDNSet = true;
     rSetRemovals = 0;
 
     artIsInLanguage = false;
 
+    loadSetupTime();
+
     int *input = dynamicLexicaliseLongestMatch(stringInput, 1);
+
+    loadLexTime();
 
     for (inputLength = 1; input[inputLength] != 0; inputLength++)
       ;
@@ -114,8 +99,6 @@ private final int upsilonBucketCount = 2000011;
       mapFind_2_0(E[0], 0, 0);
       listAdd_2(EList[0], 0, 0);
 
-      artSetupTime = clock();
-
       // for (0 \le j \= n)
       for (int j = 0; j <= inputLength; j++) {
 #ifdef ARTTRACE
@@ -141,7 +124,7 @@ printf("At index position %i, removed from R configuration G%i, %i\n", j, G, k);
             if (successorElement == eoS) successorElement = epsilon;
 //            int* tmpRed = redSetCache[redMap[G][successorElement]];
             int* tmpRed = rLHS[G];
-            if (tmpRed != null) {
+            if (tmpRed != NULL) {
               for (int xi = 0; ; xi++) {
                 int x = tmpRed[xi];
                 if (x == 0) break; // In C, the sets are zero terminated
@@ -177,7 +160,7 @@ printf("At index position %i, removed from R configuration G%i, %i\n", j, G, k);
         }
       }
 
-      artParseTime = clock();
+      loadParseTime();
 
       artIsInLanguage = false;
 
@@ -189,18 +172,13 @@ printf("At index position %i, removed from R configuration G%i, %i\n", j, G, k);
         int xk = poolGet(pp + chiSetElementK);
         int xj = poolGet(pp + chiSetElementJ);
 */
-	//        printf("Acceptance testing: pp[%i]=(%i, %i, %i, %i) with inputLength = %i\n", pp, xe, xi, xk, xj, inputLength);
 
         upsilonCardinality++;
         if (poolGet(pp + chiSetElementI) == 0 && poolGet(pp + chiSetElementJ) == inputLength)
           for (int *ppc = chiSetCache[poolGet(pp + chiSetElementIndex)]; *ppc != 0; ppc++)
             for (const int *ae = acceptingProductions; *ae != 0; ae++) {
-//            printf("Acceptance testing: pp[%i], ppc[%i] = %i\n", pp, ppc, *ppc);
             artIsInLanguage |= (*ppc == *ae);
           }
       }
-//      printf("(CPP) EarleyTableIndexedPool %s in %.4fms\n", artIsInLanguage ? "accept" : "reject",  ((double) (artParseTime-artSetupTime)/ (double) CLOCKS_PER_SEC)*1000.00);
-//      printf("Total removals from R =  %i\n", rSetRemovals);
-//      printf("Final raw P with Chi set based BSRs: |PChi| = %i\n", upsilonCardinality);
 }
 

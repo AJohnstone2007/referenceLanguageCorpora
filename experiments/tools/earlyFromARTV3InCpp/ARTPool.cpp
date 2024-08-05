@@ -30,12 +30,6 @@
 
 #include<stdlib.h>
 #include<stdio.h>
-#define String const char*
-#define public
-#define private
-#define static
-#define final
-#define boolean bool
 /*
 // For Java...
 package uk.ac.rhul.cs.csle.artpool;
@@ -44,44 +38,44 @@ import java.io.FileNotFoundException;
 
 import uk.ac.rhul.cs.csle.art.ARTException;
 
-public class ARTPool {
+ class ARTPool {
 */
   // End of language customisation
 
-  //private final int largePrime = 99999989;
-  private final int prime1 = 13;
-  private final int prime2 = 241;
-  private final int prime3 = 32029;
+  //  int largePrime = 99999989;
+    int prime1 = 13;
+    int prime2 = 241;
+    int prime3 = 32029;
 
-  private final int blockSizeExponent; // Blocks are 2^blockSizeExponent so as to allow rapid separation of block and offset
-  private final int blockSize; // The block size computed by the constructor
-  private final int blockSizeMask; // The computed mask for this block size
-  private final int blockCount; // The maximumsize of this pool
-  private int highWaterBlock = 0; // The currently extending block
-  private int highWaterOffset = 1; // The first free location in the currently extending block: start at 1 because 0 means null
+    int blockSizeExponent; // Blocks are 2^blockSizeExponent so as to allow rapid separation of block and offset
+    int blockSize; // The block size computed by the constructor
+    int blockSizeMask; // The computed mask for this block size
+    int blockCount; // The maximumsize of this pool
+   int highWaterBlock = 0; // The currently extending block
+   int highWaterOffset = 1; // The first free location in the currently extending block: start at 1 because 0 means null
 
   // A map is a hash coded table comprising 'buckets' linked lists of integers: layout bucketCount, coprime, bucket_0, bucket_1, ..., bucket_(buckets-1)
-  private final int bucketCountOffset = 0;
-  private final int bucketsOffset = 1; // The address of bucket_0
-  private final int elementNextOffset = 0; // the address of the pointer to the payload data in a list element
-  private final int elementDataOffset = 1; // the address of the pointer to the payload data in a list element
+    int bucketCountOffset = 0;
+    int bucketsOffset = 1; // The address of bucket_0
+    int elementNextOffset = 0; // the address of the pointer to the payload data in a list element
+    int elementDataOffset = 1; // the address of the pointer to the payload data in a list element
 
   // For C...
    int** blocks;
-   boolean found;
-   void error(String message) { printf("%s\n", message); exit(1); }
-   public void poolInit(int bSE, int bC) {
+   bool found;
+   void error(const char* message) { printf("%s\n", message); exit(1); }
+    void poolInit(int bSE, int bC) {
   // For Java...
   /*
-  private final int[][] blocks; // The blocks themselves, allocated one at a time on demand
-  public boolean found;
+    int[][] blocks; // The blocks themselves, allocated one at a time on demand
+   bool found;
 
-  private void error(String message) {
+   void error(const char* message) {
     System.err.printf("%s\n", message);
     System.exit(1);
   }
 
-  public ARTPool(int bSE, int bC) {
+   ARTPool(int bSE, int bC) {
   */
     // End of language customisation
 
@@ -98,16 +92,16 @@ public class ARTPool {
   }
 
   // @Override
-  // public String toString() {
-  // String ret = "Pool: blockSizeExponent=" + blockSizeExponent + ", blockSize=" + blockSize + ", blockSizeMask=" + blockSizeMask + ", blockCount=" +
+  //  const char* tochar*() {
+  // const char* ret = "Pool: blockSizeExponent=" + blockSizeExponent + ", blockSize=" + blockSize + ", blockSizeMask=" + blockSizeMask + ", blockCount=" +
   // blockCount
-  // + ", blocks=" + Arrays.toString(blocks) + ", highWaterBlock=" + highWaterBlock + ", highWaterOffset=" + highWaterOffset + "\n";
+  // + ", blocks=" + Arrays.tochar*(blocks) + ", highWaterBlock=" + highWaterBlock + ", highWaterOffset=" + highWaterOffset + "\n";
   // for (int i = 0; i < 40; i++)
   // ret += i + "-" + blocks[0][i] + " ";
   // return ret;
   // }
 
-  public int poolAllocate(int count) {
+   int poolAllocate(int count) {
     if (blockSize - highWaterOffset < count) {// allocate new block
       if (++highWaterBlock >= blockCount) error("Pool overflow"); // Note: we could resize the array here easily
       blocks[highWaterBlock] = new int[blockSize];
@@ -119,21 +113,21 @@ public class ARTPool {
     return ret;
   }
 
-  public int poolGet(int address) {
+   int poolGet(int address) {
     return blocks[address >> blockSizeExponent][address & blockSizeMask];
   }
 
-  public void poolPut(int address, int value) {
+   void poolPut(int address, int value) {
     blocks[address >> blockSizeExponent][address & blockSizeMask] = value;
   }
 
-  public int listMake() {
+   int listMake() {
     int ret = poolAllocate(1);
     poolPut(ret, 0);
     return ret;
   }
 
-  public int listAdd_1(int list, int v0) {
+   int listAdd_1(int list, int v0) {
     int ret = poolAllocate(2); // base pointer to first list element; 0 means null
     poolPut(ret, poolGet(list));
     poolPut(list, ret);
@@ -142,7 +136,7 @@ public class ARTPool {
     return ret;
   }
 
-  public int listAdd_2(int list, int v0, int v1) {
+   int listAdd_2(int list, int v0, int v1) {
     int ret = poolAllocate(3); // base pointer to first list element; 0 means null
     poolPut(ret, poolGet(list)); // load next pointer with value in list variable
     poolPut(list, ret); // load list base with address of new element
@@ -152,7 +146,7 @@ public class ARTPool {
     return ret;
   }
 
-  public int listRemove(int list) {
+   int listRemove(int list) {
     int ret = poolGet(list);
 
     if (ret == 0) return 0;
@@ -162,13 +156,13 @@ public class ARTPool {
     return ret + 1; // return addressif first data element
   }
 
-  public int mapMake(int bucketCount) { // Java will clear buckets; C will need to use calloc()
+   int mapMake(int bucketCount) { // Java will clear buckets; C will need to use calloc()
     int ret = poolAllocate(bucketCount + bucketsOffset);
     poolPut(ret, bucketCount);
     return ret;
   }
 
-  public int mapFind_1_0(int map, int k0) {
+   int mapFind_1_0(int map, int k0) {
     // Step 1: compute the bucket by hashing the key
     int bucket = k0; // initial value for hash code is just the first element
     if (bucket < 0) bucket = -bucket;
@@ -195,7 +189,7 @@ public class ARTPool {
     return newElement;
   }
 
-  public int mapFind_1_1(int map, int k0, int v1) {
+   int mapFind_1_1(int map, int k0, int v1) {
     // Step 1: compute the bucket by hashing the key
     int bucket = k0; // initial value for hash code is just the first element
     if (bucket < 0) bucket = -bucket;
@@ -226,7 +220,7 @@ public class ARTPool {
     return newElement;
   }
 
-  public int mapFind_2_0(int map, int k0, int k1) {
+   int mapFind_2_0(int map, int k0, int k1) {
     // Step 1: compute the bucket by hashing the key
     int bucket = k0; // initial value for hash code is just the first element
     bucket += k1 * prime1;
@@ -256,7 +250,7 @@ public class ARTPool {
     return newElement;
   }
 
-  public int mapFind_2_2(int map, int k0, int k1) {
+   int mapFind_2_2(int map, int k0, int k1) {
     // Step 1: compute the bucket by hashing the key
     int bucket = k0; // initial value for hash code is just the first element
     bucket += k1 * prime1;
@@ -289,7 +283,7 @@ public class ARTPool {
     return newElement;
   }
 
-  public int mapFind_3_0(int map, int k0, int k1, int k2) {
+   int mapFind_3_0(int map, int k0, int k1, int k2) {
     // Step 1: compute the bucket by hashing the key
     int bucket = k0; // initial value for hash code is just the first element
     bucket += k1 * prime1;
@@ -323,7 +317,7 @@ public class ARTPool {
     return newElement;
   }
 
-  public int mapFind_3_1(int map, int k0, int k1, int k2, int v1) {
+   int mapFind_3_1(int map, int k0, int k1, int k2, int v1) {
     // Step 1: compute the bucket by hashing the key
     int bucket = k0; // initial value for hash code is just the first element
     bucket += k1 * prime1;
@@ -360,7 +354,7 @@ public class ARTPool {
     return newElement;
   }
 
-  public int mapFind_3_1(int map, int k0, int k1, int k2) {
+   int mapFind_3_1(int map, int k0, int k1, int k2) {
     // Step 1: compute the bucket by hashing the key
     int bucket = k0; // initial value for hash code is just the first element
     bucket += k1 * prime1;
@@ -394,7 +388,7 @@ public class ARTPool {
     return newElement;
   }
 
-  public int mapFind_3_2(int map, int k0, int k1, int k2, int v0, int v1) {
+   int mapFind_3_2(int map, int k0, int k1, int k2, int v0, int v1) {
     // Step 1: compute the bucket by hashing the key
     int bucket = k0; // initial value for hash code is just the first element
     bucket += k1 * prime1;
@@ -433,7 +427,7 @@ public class ARTPool {
     return newElement;
   }
 
-  public int mapFind_4_0(int map, int k0, int k1, int k2, int k3) {
+   int mapFind_4_0(int map, int k0, int k1, int k2, int k3) {
     // Step 1: compute the bucket by hashing the key
     int bucket = k0; // initial value for hash code is just the first element
     bucket += k1 * prime1;
@@ -470,7 +464,7 @@ public class ARTPool {
     return newElement;
   }
 
-  public int mapLookup_1(int map, int k0) {
+   int mapLookup_1(int map, int k0) {
     // Step 1: compute the bucket by hashing the key
     int bucket = k0; // initial value for hash code is just the first element
     if (bucket < 0) bucket = -bucket;
@@ -489,7 +483,7 @@ public class ARTPool {
     return 0;
   }
 
-  public int mapLookup_2(int map, int k0, int k1) {
+   int mapLookup_2(int map, int k0, int k1) {
     // Step 1: compute the bucket by hashing the key
     int bucket = k0; // initial value for hash code is just the first element
     bucket += k1 * prime1;
@@ -510,7 +504,7 @@ public class ARTPool {
     return 0;
   }
 
-  public int mapLookup_3(int map, int k0, int k1, int k2) {
+   int mapLookup_3(int map, int k0, int k1, int k2) {
     // Step 1: compute the bucket by hashing the key
     int bucket = k0; // initial value for hash code is just the first element
     bucket += k1 * prime1;
@@ -534,7 +528,7 @@ public class ARTPool {
     return 0;
   }
 
-  public int mapCardinality(int tableAddress) {
+   int mapCardinality(int tableAddress) {
     int ret = 0;
     for (int bucket = 0; bucket < poolGet(tableAddress + bucketCountOffset); bucket++)
       for (int listElementAddress = poolGet(tableAddress + bucketsOffset + bucket); listElementAddress != 0; listElementAddress = poolGet(listElementAddress))
@@ -542,13 +536,13 @@ public class ARTPool {
     return ret;
   }
 
-  public void mapClear(int map) {
+   void mapClear(int map) {
     for (int bucket = 0; bucket < poolGet(map + bucketCountOffset); bucket++)
       poolPut(map + bucketsOffset + bucket, 0);
   }
 
   // This is rather like iteratorFirst, except that we unlink the return value from the map, and we use local variables
-  public int mapRemove(int map) {
+   int mapRemove(int map) {
     for (int bucket = 0; bucket < poolGet(map + bucketCountOffset); bucket++) {
       int element = poolGet(map + bucketsOffset + bucket);
       if (element != 0) { // Found an element
@@ -562,7 +556,7 @@ public class ARTPool {
   }
 
   // assign using a level two copy: the map element list is replicated, but the elements stay the same
-  public void mapAssign(int dstMap, int srcMap) {
+   void mapAssign(int dstMap, int srcMap) {
     if (poolGet(dstMap + bucketCountOffset) != poolGet(srcMap + bucketCountOffset))
       error("In pool, unsupported map assign between maps with different bucket counts");
     for (int bucket = 0; bucket < poolGet(dstMap + bucketCountOffset); bucket++) {
@@ -582,7 +576,7 @@ public class ARTPool {
   int mapIteratorElement1;
   int mapIteratorTableAddress1;
 
-  public int mapIteratorFirst1(int tableAddress) { // iterate to the first element of the table
+   int mapIteratorFirst1(int tableAddress) { // iterate to the first element of the table
     mapIteratorTableAddress1 = tableAddress;
     for (mapIteratorBucket1 = 0; mapIteratorBucket1 < poolGet(tableAddress + bucketCountOffset); mapIteratorBucket1++) {
       mapIteratorElement1 = poolGet(mapIteratorTableAddress1 + bucketsOffset + mapIteratorBucket1);
@@ -595,7 +589,7 @@ public class ARTPool {
     return 0;
   }
 
-  public int mapIteratorNext1() {
+   int mapIteratorNext1() {
     // Step 0: stick at end
     if (mapIteratorBucket1 >= poolGet(mapIteratorTableAddress1 + bucketCountOffset)) return 0;
     // Step 1: try the next list element
@@ -621,7 +615,7 @@ public class ARTPool {
   int mapIteratorElement2;
   int mapIteratorTableAddress2;
 
-  public int mapIteratorFirst2(int tableAddress) { // iterate to the first element of the table
+   int mapIteratorFirst2(int tableAddress) { // iterate to the first element of the table
     mapIteratorTableAddress2 = tableAddress;
     for (mapIteratorBucket2 = 0; mapIteratorBucket2 < poolGet(tableAddress + bucketCountOffset); mapIteratorBucket2++) {
       mapIteratorElement2 = poolGet(mapIteratorTableAddress2 + bucketsOffset + mapIteratorBucket2);
@@ -630,7 +624,7 @@ public class ARTPool {
     return 0;
   }
 
-  public int mapIteratorNext2() {
+   int mapIteratorNext2() {
     // Step 0: stick at end
     if (mapIteratorBucket2 >= poolGet(mapIteratorTableAddress2 + bucketCountOffset)) return 0;
     // Step 2: try the next list element
@@ -647,8 +641,8 @@ public class ARTPool {
 
   // Java test harness
   /*
-  public String mapToString(int mapAddress, int keySize, int valueSize) {
-    StringBuilder sb = new StringBuilder();
+   const char* mapTochar*(int mapAddress, int keySize, int valueSize) {
+    const char*Builder sb = new const char*Builder();
     // System.out.println("Pool map at base " + mapAddress + " with " + get(mapAddress + bucketCountOffset) + " buckets\n");
     sb.append("{ ");
     for (int i = 0; i < poolGet(mapAddress + bucketCountOffset); i++)
@@ -669,10 +663,10 @@ public class ARTPool {
       }
     // System.out.println("End of occupied buckets");
     sb.append("}");
-    return sb.toString();
+    return sb.tochar*();
   }
 
-  public static void main(final String[] args) throws FileNotFoundException, ARTException {
+   static void main( const char*[] args) throws FileNotFoundException, ARTException {
     ARTPool pool = new ARTPool(11, 20); // 10 blocks of 2^11 locations
     int tableAddress = pool.mapMake(7, 13), assignTarget = pool.mapMake(7, 13);
     pool.mapFind_3_2(tableAddress, 1, 2, 3, 4, 5);
@@ -680,7 +674,7 @@ public class ARTPool {
     pool.mapFind_3_2(tableAddress, 1, 2, 3, 6, 6);
     pool.mapFind_3_2(tableAddress, 1, 2, 4, 7, 7);
     System.out.println("After initial load: expect 1,2,3->6,6 and 1,2,4->7,7");
-    System.out.println(pool.mapToString(tableAddress, 3, 2));
+    System.out.println(pool.mapTochar*(tableAddress, 3, 2));
 
     System.out.println("Iterator test");
     int iteratorCardinality = 0;
@@ -693,11 +687,11 @@ public class ARTPool {
     else
       System.out.println("Iterator cardinality BAD");
     System.out.println("Lookup: " + pool.mapLookup_3(tableAddress, 1, 2, 4));
-    System.out.println(pool.mapToString(tableAddress, 3, 2));
+    System.out.println(pool.mapTochar*(tableAddress, 3, 2));
     System.out.println("Cardinality: " + pool.mapCardinality(tableAddress));
     pool.mapClear(tableAddress);
     System.out.println("After clear, cardinality: " + pool.mapCardinality(tableAddress));
-    System.out.println(pool.mapToString(tableAddress, 3, 2));
+    System.out.println(pool.mapTochar*(tableAddress, 3, 2));
     // System.out.println(pool);
 
     // Now overload the map and see if all is well
@@ -706,9 +700,9 @@ public class ARTPool {
       System.out.println("Loading element" + i);
       pool.mapFind_3_2(tableAddress, i, i, i, 0, 0);
     }
-    System.out.println("tableAddress table" + pool.mapToString(tableAddress, 3, 2));
+    System.out.println("tableAddress table" + pool.mapTochar*(tableAddress, 3, 2));
     pool.mapAssign(assignTarget, tableAddress);
-    System.out.println("assignTarget table" + pool.mapToString(tableAddress, 3, 2));
+    System.out.println("assignTarget table" + pool.mapTochar*(tableAddress, 3, 2));
 
     System.out.println("Iterator test");
     iteratorCardinality = 0;
@@ -731,11 +725,11 @@ public class ARTPool {
 
     pool.mapClear(tableAddress);
     System.out.println("After clear, cardinality: " + pool.mapCardinality(tableAddress));
-    System.out.println(pool.mapToString(tableAddress, 3, 2));
+    System.out.println(pool.mapTochar*(tableAddress, 3, 2));
 
-    System.out.println("assignTarget table" + pool.mapToString(tableAddress, 3, 2));
+    System.out.println("assignTarget table" + pool.mapTochar*(tableAddress, 3, 2));
     pool.mapAssign(tableAddress, assignTarget);
-    System.out.println("tableAddress table after assignment from assigntarget" + pool.mapToString(tableAddress, 3, 2));
+    System.out.println("tableAddress table after assignment from assigntarget" + pool.mapTochar*(tableAddress, 3, 2));
 
   }
   // For Java...
