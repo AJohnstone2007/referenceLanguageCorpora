@@ -639,6 +639,10 @@ import uk.ac.rhul.cs.csle.art.ARTException;
     return 0;
   }
 
+  long poolAllocated() {
+    return ((((long) highWaterBlock) * ((long) blockSize)) + (highWaterOffset) - 1l) * 4l;
+  }
+
   // Java test harness
   /*
    const char* mapTochar*(int mapAddress, int keySize, int valueSize) {
@@ -667,7 +671,7 @@ import uk.ac.rhul.cs.csle.art.ARTException;
   }
 
    static void main( const char*[] args) throws FileNotFoundException, ARTException {
-    ARTPool pool = new ARTPool(11, 20); // 10 blocks of 2^11 locations
+    ARTPool pool = new ARTPool(21, 2048);  // Up to 2048 8MByte blocks (2^21 * 4bytes in an integer)
     int tableAddress = pool.mapMake(7, 13), assignTarget = pool.mapMake(7, 13);
     pool.mapFind_3_2(tableAddress, 1, 2, 3, 4, 5);
     pool.mapFind_3_2(tableAddress, 1, 2, 4, 6, 6);

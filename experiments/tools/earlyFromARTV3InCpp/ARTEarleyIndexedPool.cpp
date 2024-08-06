@@ -121,6 +121,7 @@
   }
 
   void artParse(const char* stringInput, const char* inputFilename) {
+    loadAlgorithm("ARTEarleyIndexedPool (C)");
     loadSetupTime();
     int* input = dynamicLexicaliseLongestMatch(stringInput, 1);
 
@@ -135,8 +136,7 @@
 
     loadLexTime();
 
-    poolInit(20, 1024); // 1024 x 1Mlocation blocks: at 32-buit integers that 4G of memory when fully
-                                  // allocated
+    poolInit(21, 2048);  // Up to 2048 8MByte blocks (2^21 * 4bytes in an integer)
     epsilonSPPFNode = poolAllocate(4);
     poolPut(epsilonSPPFNode, epsilon);
 
@@ -320,6 +320,8 @@
     // if (S ::= τ ·, 0, w) ∈ En return w
 
     loadParseTime();
+    loadEndPoolAllocated(poolAllocated());
+    
     // Scan eSets.get(inputTokenLength) to look for accepting slots and some w, then
     // return w
     for (int e = mapIteratorFirst1(eSets[inputTokenLength]); e != 0; e = mapIteratorNext1()) {

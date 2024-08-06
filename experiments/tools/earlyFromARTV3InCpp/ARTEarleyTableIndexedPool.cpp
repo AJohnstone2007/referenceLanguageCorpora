@@ -65,18 +65,21 @@ int rSetRemovals;
 
     artIsInLanguage = false;
 
+    loadAlgorithm("ARTEarleyTableIndexedPool (C)");
     loadSetupTime();
 
     int *input = dynamicLexicaliseLongestMatch(stringInput, 1);
-
-    loadLexTime();
-
     for (inputLength = 1; input[inputLength] != 0; inputLength++)
       ;
 
     inputLength--;
 
-      poolInit(21, 2048); // 1024 x 1Mlocation blocks: at 32-bit integers that 4G of memory when fully
+    loadInputStringLength(strlen(stringInput));
+    loadInputTokenLength(inputLength);
+    loadLexTime();
+
+
+      poolInit(21, 2048);  // Up to 2048 8MByte blocks (2^21 * 4bytes in an integer)
       chiSetCacheInitialiser();
       redSetCacheInitialiser();
       rLHSInitialiser();
@@ -161,7 +164,7 @@ printf("At index position %i, removed from R configuration G%i, %i\n", j, G, k);
       }
 
       loadParseTime();
-
+      loadEndPoolAllocated(poolAllocated()); 
       artIsInLanguage = false;
 
       int upsilonCardinality = 0;

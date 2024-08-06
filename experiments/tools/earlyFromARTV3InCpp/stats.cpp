@@ -27,13 +27,13 @@ time_point<steady_clock> derivationSelectTime;
 time_point<steady_clock> termGenerateTime;
 time_point<steady_clock> semanticsTime;
 
-long artParseStartMemory;
-long artParseEndMemory;
-long artParseStartPool;
-long artParseEndPool;
+long endPoolAllocated;
 int inputStringLength;
 int inputTokenLength;
+const char* algorithm;
 
+void loadInputStringLength(int i) { inputStringLength = i; }
+void loadInputTokenLength(int i) { inputTokenLength = i; }
 void loadSetupTime() { setupTime = steady_clock::now(); }
 void loadLexTime() { lexTime = steady_clock::now(); }
 void loadLexChooseTime() { lexChooseTime = steady_clock::now(); }
@@ -42,8 +42,10 @@ void loadParseChooseTime() { parseChooseTime = steady_clock::now(); }
 void loadDerivationSelectTime() { derivationSelectTime = steady_clock::now(); }
 void loadTermGenerateTime() { termGenerateTime = steady_clock::now(); }
 void loadSemanticsTime() { semanticsTime = steady_clock::now(); }
+void loadEndPoolAllocated(long m) { endPoolAllocated = m; }
+void loadAlgorithm(const char* s) { algorithm = s; }
 
-void normaliseStats() {
+void normaliseTimes() {
   if (setupTime < startTime) setupTime = startTime;
   if (lexTime == startTime) lexTime = setupTime;
   if (lexChooseTime == startTime) lexChooseTime = lexTime;
@@ -54,15 +56,11 @@ void normaliseStats() {
   if (semanticsTime == startTime) semanticsTime = termGenerateTime;
 }
 
-long artMemoryUsed() { return 0;} 
-
-void loadStartMemory() { artParseStartMemory = artMemoryUsed(); }
-void loadEndMemory() { artParseEndMemory = artMemoryUsed(); }
-
 void resetStats() {
   startTime = steady_clock::now();
   setupTime = lexTime = lexChooseTime = parseTime = parseChooseTime = derivationSelectTime = termGenerateTime = semanticsTime = startTime;
-  artParseStartMemory = artParseEndMemory = artParseStartPool = artParseEndPool = 0;
+  endPoolAllocated = 0;
+  algorithm = "---";
 }
 
 double interval(time_point<steady_clock> start, time_point<steady_clock> end){
@@ -70,10 +68,11 @@ double interval(time_point<steady_clock> start, time_point<steady_clock> end){
 }
 
 void artLog() {
-  normaliseStats();
+  normaliseTimes();
 
-    printf("%i,---,%s,OK,%7.3f,%7.3f,%7.3f,%7.3f,%7.3f,%7.3f,%7.3f,%7.3f,%i,%i,1\n",
+    printf("%i,%s,%s,OK,%7.3f,%7.3f,%7.3f,%7.3f,%7.3f,%7.3f,%7.3f,%7.3f,%i,%i,1,%li\n",
             inputStringLength,
+            algorithm,
             (artIsInLanguage ? "accept" : "reject"),
             interval(startTime, setupTime),
             interval(setupTime, lexTime),
@@ -84,5 +83,6 @@ void artLog() {
             interval(derivationSelectTime, termGenerateTime),
             interval(termGenerateTime, semanticsTime),
             inputTokenLength,
-            (inputTokenLength - 1));
+            (inputTokenLength - 1),
+            endPoolAllocated);
   }
