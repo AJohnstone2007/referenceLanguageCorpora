@@ -1,7 +1,13 @@
 line,date,time,tool,script,iter,language,grammar,string,length,algorithm,result,status,TSetup,TLex,TLChoose,TParse,TPChoose,TSelect,TTerm,TSem,tweN,tweE,lexes,Pool,H0,H1,H2,H3,H4,H5,H6+,GSS SN,GSS EN,GGS E,SPPF Eps,SPPF T,SPPF NT,SPPF Inter,SPPF PN,SPPF Edge
-1,2024-08-18,22:05:59,art.jar,gllbaseLine.art,0,C,ansi_c/tok/ansi_c.art,rhul/tok/bool.tok,null
-2,2024-08-18,22:06:01,art.jar,gllbaseLine.art,0,C,ansi_c/tok/ansi_c.art,rhul/tok/gtb_src.tok,null
-3,2024-08-18,22:06:11,art.jar,gllbaseLine.art,0,C,ansi_c/tok/ansi_c.art,rhul/tok/rdp_full.tok,null
-4,2024-08-18,22:06:17,art.jar,gllbaseLine.art,0,Pascal,iso_pascal_7185/tok/pascal.art,rhul/tok/quad.tok,null
-5,2024-08-18,22:06:19,art.jar,gllbaseLine.art,0,Pascal,iso_pascal_7185/tok/pascal.art,rhul/tok/treeview.tok,null
-6,2024-08-18,22:06:21,art.jar,gllbaseLine.art,0,Pascal,iso_pascal_7185/tok/pascal.art,rhul/tok/view_ite.tok,null
+1,2024-08-19,14:14:43,art.jar,gllbaseLine.art,0,C,ansi_c/tok/ansi_c.art,rhul/tok/bool.tok,14890,GLLBaseLine,accept,OK,4.884,27.487,0.000,847.786,0.000,0.000,0.000,0.000,4292,4291,1,0
+2,2024-08-19,14:14:46,art.jar,gllbaseLine.art,0,C,ansi_c/tok/ansi_c.art,rhul/tok/gtb_src.tok,117560,GLLBaseLine,accept,OK,5.492,104.263,0.000,14824.209,0.000,0.000,0.000,0.000,36828,36827,1,0
+3,2024-08-19,14:15:03,art.jar,gllbaseLine.art,0,C,ansi_c/tok/ansi_c.art,rhul/tok/rdp_full.tok,84784,GLLBaseLine,accept,OK,2.046,56.049,0.000,6556.879,0.000,0.000,0.000,0.000,26552,26551,1,0
+4,2024-08-19,14:15:11,art.jar,gllbaseLine.art,0,Pascal,iso_pascal_7185/tok/pascal.art,rhul/tok/quad.tok,1459,GLLBaseLine,accept,OK,2.396,0.748,0.000,13.831,0.000,0.000,0.000,0.000,280,279,1,0
+5,2024-08-19,14:15:13,art.jar,gllbaseLine.art,0,Pascal,iso_pascal_7185/tok/pascal.art,rhul/tok/treeview.tok,25122,GLLBaseLine,accept,OK,2.097,19.291,0.000,168.439,0.000,0.000,0.000,0.000,4426,4425,1,0
+6,2024-08-19,14:15:16,art.jar,gllbaseLine.art,0,Pascal,iso_pascal_7185/tok/pascal.art,rhul/tok/view_ite.tok,25434,GLLBaseLine,accept,OK,2.850,23.432,0.000,184.238,0.000,0.000,0.000,0.000,4481,4480,1,0
+7,2024-08-19,14:15:20,art.jar,gllHashPool.art,0,C,ansi_c/tok/ansi_c.art,rhul/tok/bool.tok,14890,GLLHashPool,accept,OK,5.470,27.346,0.000,698.819,0.000,0.000,0.000,0.000,4292,4291,1,0
+8,2024-08-19,14:15:22,art.jar,gllHashPool.art,0,C,ansi_c/tok/ansi_c.art,rhul/tok/gtb_src.tok,117560,GLLHashPool,accept,OK,1.302,58.495,0.000,1907.006,0.000,0.000,0.000,0.000,36828,36827,1,0
+9,2024-08-19,14:15:25,art.jar,gllHashPool.art,0,C,ansi_c/tok/ansi_c.art,rhul/tok/rdp_full.tok,84784,GLLHashPool,accept,OK,2.827,77.570,0.000,1280.911,0.000,0.000,0.000,0.000,26552,26551,1,0
+10,2024-08-19,14:15:27,art.jar,gllHashPool.art,0,Pascal,iso_pascal_7185/tok/pascal.art,rhul/tok/quad.tok,1459,GLLHashPool,accept,OK,4.377,1.933,0.000,196.933,0.000,0.000,0.000,0.000,280,279,1,0
+11,2024-08-19,14:15:29,art.jar,gllHashPool.art,0,Pascal,iso_pascal_7185/tok/pascal.art,rhul/tok/treeview.tok,25122,GLLHashPool,accept,OK,2.927,35.424,0.000,233.116,0.000,0.000,0.000,0.000,4426,4425,1,0
+12,2024-08-19,14:15:30,art.jar,gllHashPool.art,0,Pascal,iso_pascal_7185/tok/pascal.art,rhul/tok/view_ite.tok,25434,GLLHashPool,accept,OK,2.146,14.511,0.000,235.711,0.000,0.000,0.000,0.000,4481,4480,1,0

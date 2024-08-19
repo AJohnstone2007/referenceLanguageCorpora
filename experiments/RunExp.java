@@ -73,7 +73,7 @@ public class RunExp {
                       if (tf.length == 0) fatal("Script " + gg + " requires ART, but no relevant tools found");
                       for (var t : tf) {
                         logExperiment(i, s, l, a, g, c, gg, cc, t);
-                        execute(log, "java", "-jar", t.toString(), "noFX", "test.art");
+                        execute(log, "java", "-jar", t.toString(), "test.art");
                       }
                       break;
                     case "artv3":
