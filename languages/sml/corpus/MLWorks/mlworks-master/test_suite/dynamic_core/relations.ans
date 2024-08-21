@@ -1,2 +1,0 @@
-val foo : int -> int = fn
-val y : bool = false

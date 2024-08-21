@@ -1,7 +1,0 @@
-Listener Input:17,8 to 17,26: error: Handler disagrees with expression
-  Handler type:    bool
-  Expression type: int
-    Cannot unify
-      bool
-    and
-      int

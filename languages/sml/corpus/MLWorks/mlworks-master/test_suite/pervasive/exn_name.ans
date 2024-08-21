@@ -1,4 +1,0 @@
-exception MyException
-val noDebugInfo : string -> string = fn
-val reportOK : bool -> string = fn
-val x : string = "test succeeded"

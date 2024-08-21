@@ -1,5 +1,0 @@
-structure bad1 =
-  struct
-    eqtype t = t
-    val X : bad1.t = X
-  end

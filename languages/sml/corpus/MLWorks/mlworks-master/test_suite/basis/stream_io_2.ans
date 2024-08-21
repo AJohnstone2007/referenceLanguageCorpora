@@ -1,3 +1,0 @@
-val reportOK : bool -> string = fn
-val ans1 : string = "test succeeded."
-val ans2 : string = "test succeeded."

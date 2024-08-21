@@ -1,8 +1,0 @@
-make ok
-dump ok
-.
-..
-a
-b
-c
-No such directory: /doesnotexist

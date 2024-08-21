@@ -1,2 +1,0 @@
-When quitting tetris, make sure that the scores window is destroyed.
-

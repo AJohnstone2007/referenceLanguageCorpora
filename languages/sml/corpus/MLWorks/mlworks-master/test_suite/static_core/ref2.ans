@@ -1,2 +1,0 @@
-val g : (int * string) -> string = fn
-val t : char list ref = ref([#"a", #"b", #"c", #"d", #"e", #"f"])

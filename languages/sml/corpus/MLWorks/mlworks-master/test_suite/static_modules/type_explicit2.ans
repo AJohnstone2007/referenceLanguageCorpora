@@ -1,5 +1,0 @@
-signature FOO =
-  sig
-    type Foo
-  end
-functor Bar

@@ -1,2 +1,0 @@
-exception E of string
-val x : string = "mmm"

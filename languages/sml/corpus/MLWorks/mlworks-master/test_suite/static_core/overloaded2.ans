@@ -1,5 +1,0 @@
-structure S =
-  struct
-    val bar : int -> int -> bool = fn
-    val foo : int -> int -> int = fn
-  end

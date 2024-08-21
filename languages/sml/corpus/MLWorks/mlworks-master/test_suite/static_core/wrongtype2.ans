@@ -1,7 +1,0 @@
-Listener Input:14,8 to 14,47: error: Type mismatch in recursive value binding
-  Pattern type:    int -> int
-  Expression type: bool -> bool
-    Cannot unify
-      int
-    and
-      bool

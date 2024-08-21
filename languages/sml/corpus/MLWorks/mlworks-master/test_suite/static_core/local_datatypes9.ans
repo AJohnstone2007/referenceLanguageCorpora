@@ -1,4 +1,0 @@
-datatype t =
-  b of e
-val b : e(hidden) -> t
-val f : e(hidden) -> t = fn

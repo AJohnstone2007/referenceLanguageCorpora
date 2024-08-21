@@ -1,1 +1,0 @@
-val mk_id : unit -> 'a -> 'a = fn

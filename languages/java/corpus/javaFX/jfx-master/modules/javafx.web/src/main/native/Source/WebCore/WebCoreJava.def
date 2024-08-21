@@ -1,4 +1,0 @@
-EXPORTS
-    JSContextGetGlobalObject
-    WTFReportAssertionFailure
-    WTFReportBacktrace

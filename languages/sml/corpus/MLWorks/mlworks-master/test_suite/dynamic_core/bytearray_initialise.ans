@@ -1,2 +1,0 @@
-val foo : int -> int = fn
-val x : int = 10000

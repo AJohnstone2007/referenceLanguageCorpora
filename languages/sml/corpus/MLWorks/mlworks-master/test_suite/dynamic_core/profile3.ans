@@ -1,1 +1,0 @@
-val it : string = "Profiling my_fibl 27 has a reasonable result"

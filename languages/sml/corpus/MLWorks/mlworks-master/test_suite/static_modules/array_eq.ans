@@ -1,3 +1,0 @@
-val a : (int -> int) array = #A[fn]
-val f : int -> int = fn
-val it : bool = true

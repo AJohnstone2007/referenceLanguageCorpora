@@ -1,2 +1,0 @@
-val < : (int * int) -> bool = fn
-val min : (int * int) -> int = fn

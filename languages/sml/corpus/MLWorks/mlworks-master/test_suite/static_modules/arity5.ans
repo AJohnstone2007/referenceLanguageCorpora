@@ -1,9 +1,0 @@
-val it : unit = ()
-signature SIG =
-  sig
-    type 'a T
-  end
-structure S =
-  struct
-    type 'a T = 'a T
-  end

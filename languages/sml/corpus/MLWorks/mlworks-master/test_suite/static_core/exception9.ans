@@ -1,4 +1,0 @@
-exception E of int
-exception F of int
-val myfun : exn -> int = fn
-val x : int = 3

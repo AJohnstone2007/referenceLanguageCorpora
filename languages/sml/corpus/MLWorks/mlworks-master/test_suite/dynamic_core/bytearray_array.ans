@@ -1,3 +1,0 @@
-Pass
-val a : MLWorks.Internal.ByteArray.bytearray = #B[0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
-val b : MLWorks.Internal.ByteArray.bytearray = #B[0, 0, 0, 0, 0, 0, 0, 0, 0, 0]

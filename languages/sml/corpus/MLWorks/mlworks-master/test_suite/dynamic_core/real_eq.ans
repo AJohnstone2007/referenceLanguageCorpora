@@ -1,3 +1,0 @@
-val it : unit = ()
-val apply : ((real * real) -> 'a) -> 'a = fn
-val x : bool list = [true, true, false, true]

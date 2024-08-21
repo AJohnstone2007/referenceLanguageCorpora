@@ -1,5 +1,0 @@
-datatype dt =
-  y30
-val y30 : dt
-val f : 'a -> 'b -> 'a = fn
-val it : int = 0

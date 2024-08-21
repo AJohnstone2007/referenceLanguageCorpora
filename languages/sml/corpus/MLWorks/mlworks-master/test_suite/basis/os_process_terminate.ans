@@ -1,2 +1,0 @@
-val oops : unit -> unit = fn
-val it : unit = ()

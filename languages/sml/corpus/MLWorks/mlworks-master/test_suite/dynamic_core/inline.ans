@@ -1,1 +1,0 @@
-val list_eq : (''a list * ''a list) -> bool = fn

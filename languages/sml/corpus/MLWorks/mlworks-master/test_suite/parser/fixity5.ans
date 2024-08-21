@@ -1,2 +1,0 @@
-infix 0 f
-val f : (bool * bool) -> bool = fn

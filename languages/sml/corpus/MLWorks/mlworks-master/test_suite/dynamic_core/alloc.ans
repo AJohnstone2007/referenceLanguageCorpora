@@ -1,2 +1,0 @@
-val explode : string -> string list = fn
-val str : string list = ["a", "b", "c", "d", "e"]

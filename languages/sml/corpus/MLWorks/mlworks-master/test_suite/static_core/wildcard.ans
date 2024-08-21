@@ -1,4 +1,0 @@
-datatype a =
-  A of int
-val A : int -> a
-val f : a -> int = fn

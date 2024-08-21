@@ -1,3 +1,0 @@
-datatype node =
-  Uconst of int
-val Uconst : int -> node

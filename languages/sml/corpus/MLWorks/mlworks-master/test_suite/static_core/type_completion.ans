@@ -1,2 +1,0 @@
-eqtype c = int
-val x : c = 33

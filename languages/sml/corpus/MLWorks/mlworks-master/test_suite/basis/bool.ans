@@ -1,4 +1,0 @@
-fromString:OK
-not:OK
-toString:OK
-val it : unit = ()

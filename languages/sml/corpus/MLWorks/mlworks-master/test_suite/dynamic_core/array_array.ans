@@ -1,3 +1,0 @@
-Pass
-val a : int array = #A[0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
-val b : int array = #A[0, 0, 0, 0, 0, 0, 0, 0, 0, 0]

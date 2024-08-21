@@ -1,3 +1,0 @@
-exception DontFail
-val hasFailed : bool ref = ref(false)
-test succeeded

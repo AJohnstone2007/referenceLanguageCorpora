@@ -1,3 +1,0 @@
-exception Test
-Pass
-val result : bool = true

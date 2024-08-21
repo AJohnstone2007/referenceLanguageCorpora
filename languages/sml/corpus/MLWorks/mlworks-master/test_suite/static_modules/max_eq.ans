@@ -1,5 +1,0 @@
-signature SIG =
-  sig
-    datatype t =
-      T
-  end
