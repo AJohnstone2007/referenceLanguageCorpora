@@ -1,0 +1,5 @@
+!parser gllHashPool
+
+!try 'test.str'
+
+!print statistics
