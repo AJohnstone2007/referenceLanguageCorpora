@@ -11,19 +11,15 @@ See the README.md file in individual directories for details on how these corpor
 
 **experiments** contains scripts for running experiments using our own parser implementations, and data collected from those experiments.
 
-## 'str' and 'tok' variants
+## 'org', 'cws' and 'tok' variants
 
-The grammars and example inputs come in two flavours: tokenised (tok) and non-tokenised (str). Non-tokenised inputs are just normal example programs. The tokenised inputs have keyword-only lexical structure in which lexical elements whose pattern contains more than one lexeme are replaced by a keyword. This means, for instance, that all identifiers in a Java program are replaced by the keyword ID, all integer constants by the keyword INTEGER, all string constants by the keyword STRING and so on.
+The example inputs come in three flavours: the original strings as produced by the programmer (org), compressed whitespace versions (cws) and tokenised versions(tok). 
 
-The purpose of the tokenised variants is to suppress the lexicalisation overhead for those algorithms that intermingle lexicalisation and parsing, enabling us to characterise the parser runtimes independently of the lexical complexity.
+**org** inputs are just normal example programs. 
 
-#### 'Full' and 'compressed white space' variants
+**cws** inputs contain the same strings as the corresponding **org** input except thaty every run of whitespace is replaced by a single space unless the run contains one or more newline characters, in which case the run is replaced by a single newline. The purpose of the **cws** variants is to normalise lexer performance so that long runs of whitespace do not introduce lexicalisation overheads for experiments that focus on parser performance. 
 
-For some inputs we provide compressed white space (**cws**) inputs in which every run of whitespace is replaced by a single space unless the run contains one or more newline characters, in which case the run is replaced by a single newline. 
-
-The purpose of the **cws** variants is again to normalise lexer performance so that long runs of whitespace do not introduce lexicalisation overheads for experiments that focus on parser performance. 
-
-The tokenisation process that produces the **tok** files automatically compresses white space.
+**tok** inputs have keyword-only lexical structure in which lexical elements whose pattern contains more than one lexeme are replaced by a keyword. This means, for instance, that all identifiers in a Java program are replaced by the keyword ID, all integer constants by the keyword INTEGER, all string constants by the keyword STRING and so on.
 
 ## Running experiments
 
@@ -55,6 +51,8 @@ The tokenisation process that produces the **tok** files automatically compresse
 
 2 .... java
 
+3 ...... build *( language standards and programs to construct the corpora )*
+
 3 ...... grammar
 
 4 ........ *(more grammars for java...)*
@@ -63,11 +61,9 @@ The tokenisation process that produces the **tok** files automatically compresse
 
 5 .......... doc *(provenance)*
 
-5 .......... **str** *(grammar group for jls18 that include full lexical rules)*
+5 .......... **org** *(grammar group for jls18 that include full lexical rules)*
 
 5 .......... **tok** *(grammar group for jls18 that expect inputs to be 'tokenised')*
-
-5 .......... **bulk** *(grammar group for jls18 that is used for bulk tests)*
 
 3 ...... corpus
 
@@ -75,17 +71,11 @@ The tokenisation process that produces the **tok** files automatically compresse
 
 4 ........ jfx	 *(a specific corpus for Java)*
 
-5 .......... doc *(the provenance of these inputs)*
-
-5 .......... src *(the original version of each input)*
+5 .......... org *(the original version of each input)*
 
 5 .......... cws *(compressed white space version of each input)*
 
-5 .......... **str** *(input group to be scanned with full lexical structure)*
-
 5 .......... **tok** *('tokenised' input group)*
-
-5 .......... **bulk** *(buk input group)*
 
 ## Other resources
  
@@ -99,4 +89,4 @@ You may also find the following pages useful.
 
 You will find source code and pre-built executables for GTB and the tokenisers that produce our **tok** variants in the **old** directory of the ART repository.
 
-Adrian Johnstone, July 2024
+Adrian Johnstone, August 2024
