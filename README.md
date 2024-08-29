@@ -17,13 +17,13 @@ The example inputs come in three flavours: the original strings as produced by t
 
 **org** inputs are just normal example programs. 
 
-**cws** inputs contain the same strings as the corresponding **org** input except thaty every run of whitespace is replaced by a single space unless the run contains one or more newline characters, in which case the run is replaced by a single newline. The purpose of the **cws** variants is to normalise lexer performance so that long runs of whitespace do not introduce lexicalisation overheads for experiments that focus on parser performance. 
+**cws** inputs contain the same strings as the corresponding **org** input except that every run of whitespace is replaced by a single space unless the run contains one or more newline characters, in which case the run is replaced by a single newline. The purpose of the **cws** variants is to normalise lexer performance so that long runs of whitespace do not introduce lexicalisation overheads for experiments that focus on parser performance. 
 
 **tok** inputs have keyword-only lexical structure in which lexical elements whose pattern contains more than one lexeme are replaced by a keyword. This means, for instance, that all identifiers in a Java program are replaced by the keyword ID, all integer constants by the keyword INTEGER, all string constants by the keyword STRING and so on.
 
 ## Running experiments
 
-`RunExp.java` in **experiments** scans the entire **languages** directory structure, running experiments specified in **experiments/try**. 
+`experiments/RunExp.java` scans the entire **languages** directory structure, running experiments specified in **experiments/try** and producing `log.csv`, `timeSummary.csv` and `spaceSummary.csv`
 
 ## Directory structure
 
@@ -35,7 +35,7 @@ The example inputs come in three flavours: the original strings as produced by t
 
 2 .... scripts *(a collection of ART and GTB stub scripts that are concatenated with grammars)*
 
-2 .... results *(results from experimental runs)*	
+2 .... results *(results from some of our experimental runs)*	
 
 2 .... `RunExp.java` *(Scan directory stucture and run experiments)*
 
@@ -59,8 +59,6 @@ The example inputs come in three flavours: the original strings as produced by t
 
 4 ........ jls18 *(grammars from the Java Language Specification version 18)*
 
-5 .......... doc *(provenance)*
-
 5 .......... **org** *(grammar group for jls18 that include full lexical rules)*
 
 5 .......... **tok** *(grammar group for jls18 that expect inputs to be 'tokenised')*
@@ -71,9 +69,9 @@ The example inputs come in three flavours: the original strings as produced by t
 
 4 ........ jfx	 *(a specific corpus for Java)*
 
-5 .......... org *(the original version of each input)*
+5 .......... **org** *(the original version of each input)*
 
-5 .......... cws *(compressed white space version of each input)*
+5 .......... **cws** *(compressed white space version of each input)*
 
 5 .......... **tok** *('tokenised' input group)*
 
