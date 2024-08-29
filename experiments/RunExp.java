@@ -62,9 +62,9 @@ class RunExp {
                     fileCat("test.str", cc);
                     fileCat("test.gtb", gg, s);
                     for (var tt : t)
-                      for (int i = 0; i < count; i++) {// iteration count
+                      for (int i = 1; i <= count; i++) {// iteration count
                         logExperiment(logFile, i, s, l, a, g, c, tt, gg, cc);
-                        System.out.println("** " + tt + "test.gtb");
+                        System.out.println("   " + tt + "test.gtb");
                         execute(logFile, tt.toString(), "test.gtb");
                       }
                   } else if (getFileType(s.getName()).equals("bat") || getFileType(s.getName()).equals("sh")) {
@@ -73,7 +73,7 @@ class RunExp {
                     var t = getFiles(toolsDir); // collect tools
                     if (t.length == 0) fatal("Script " + gg + " requires ART, but no relevant tools found in " + toolsDir);
                     for (var tt : t) { // tool
-                      for (int i = 0; i < count; i++) {// iteration count
+                      for (int i = 1; i <= count; i++) {// iteration count
                         logExperiment(logFile, i, s, l, a, g, c, tt, gg, cc);
                         Scanner scanner = new Scanner(s);
                         while (scanner.hasNext()) {
@@ -89,7 +89,7 @@ class RunExp {
                           ss = ss.replaceAll("$1", ttPath); // P1 is the tool filename (Un*x)
                           ss = ss.replaceAll("$2", ggPath); // P2 is the grammar filename (Un*x)
                           ss = ss.replaceAll("$3", ccPath); // P3 is the corpus string filename (Un*x)
-                          System.out.println("** " + ss);
+                          System.out.println("   " + ss);
                           execute(logFile, ss.split(" "));
                         }
                       }
