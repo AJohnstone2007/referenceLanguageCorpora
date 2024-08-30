@@ -1,4 +1,4 @@
-start  CompilationUnit 
+!start  CompilationUnit 
 
 Identifier ::= 'ID'
 TypeIdentifier ::= 'ID'
