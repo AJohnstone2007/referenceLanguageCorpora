@@ -1,1 +1,0 @@
-java -jar %1 %2 !parser gllBaseLine !try '%3' !print statistics
