@@ -1,0 +1,7 @@
+OS Name	Microsoft Windows 10 Enterprise
+Version	10.0.19045 Build 19045
+System Manufacturer	Dell Inc.
+System Model	XPS 15 9510
+System Type	x64-based PC
+Processor	11th Gen Intel(R) Core(TM) i7-11800H @ 2.30GHz, 2304 Mhz, 8 Core(s), 16 Logical 
+Installed Physical Memory (RAM)	16.0 GB
