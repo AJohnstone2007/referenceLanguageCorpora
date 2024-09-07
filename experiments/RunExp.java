@@ -37,8 +37,8 @@ class RunExp {
     Files.deleteIfExists(Paths.get(logFileName));
     File logFile = new File(logFileName);
     appendTo(logFile,
-        "line,date,time,tool,script,iter,language,grammar,string,length,algorithm,result," + "TLex,TLChoose,TParse,TPChoose,TSelect,TTerm,tweN,tweE,lexes,"
-            + "GSS SN,GSS EN,GGS E,SPPF Eps,SPPF T,SPPF NT,SPPF Inter,SPPF PN,SPPF Edge,Pool,H0,H1,H2,H3,H4,H5,H6+\n");
+        "line,date,time,tool,script,iter,language,grammar,string,length,algorithm,result,status,TSetup,TLex,TLChoose,TParse,TPChoose,TTerm,TSem,twe N,twe E,lexes,"
+            + "Desc,GSS N,GGS E,Pops,SPPF Eps,SPPF T,SPPF NonT,SPPF Inter,SPPF SymInter,SPPF Pack,SPPF Amb,SPPF Edge,SPPF Cyc SCC,Deriv N,Deriv Amb,Mem,Pool,H0,H1,H2,H3,H4,H5,H6+\n");
     String rlc = args[0];
     int count = Integer.parseInt(args[1]);
     Set<String> groupSet = new HashSet<>();
@@ -245,7 +245,7 @@ class MakeTimeSummary {
   MakeTimeSummary(String logFileName, String summaryFileName) throws IOException {
     Files.deleteIfExists(Paths.get(summaryFileName));
     var fw = new FileWriter(new File(summaryFileName), true);
-    fw.write("tool,script,language,grammar,string,tokens,algorithm,result," + "Runs,TParseMin,TParseMax,TParseMean,TParseBestFiveMean,,Results...\n");
+    fw.write("tool,script,language,grammar,string,tokens,algorithm,result," + "Runs,TMin,TMax,TMean,TBest5Mean,,Results...\n");
 
     var scanner = new Scanner(new File(logFileName));
     var header = scanner.nextLine();
@@ -259,7 +259,8 @@ class MakeTimeSummary {
       }
       var key = new SummaryKey(fields[3], fields[4], fields[6], fields[7], fields[8], fields[21], fields[10], fields[11]);
       if (map.get(key) == null) map.put(key, new ArrayList<Double>());
-      map.get(key).add(Double.parseDouble(fields[16])); // Add parse time
+      // map.get(key).add(Double.parseDouble(fields[16])); // Add parse time
+      map.get(key).add(Double.parseDouble(fields[17])); // Add parse chooser time
     }
 
     for (var k : map.keySet()) {
