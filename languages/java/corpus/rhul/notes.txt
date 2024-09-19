@@ -1,0 +1,10 @@
+In tok:
+
+java1.tok is a copy of life.tok
+java2.tok is a copy of artSourceW.tok
+java3.tok is a copy of artSourceV.tok
+
+These three examples appear underthose names in the earleyTableData
+group. In earlier papers, life.tok appears under its own name. The
+artSource selections were created by EAS during the experimental work
+for the Earley Table paper.

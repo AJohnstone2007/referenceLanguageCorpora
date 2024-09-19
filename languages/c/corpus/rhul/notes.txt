@@ -1,0 +1,8 @@
+in tok:
+
+c1.tok is a copy of bool.tok
+c2.tok is a copy of rdp_full.tok
+c3.tok is a copy of gtb_src.tok
+
+They appear under those names in the Earley Table paper, and under their original names in early publications.
+

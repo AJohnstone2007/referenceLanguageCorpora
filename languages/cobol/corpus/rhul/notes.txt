@@ -1,0 +1,6 @@
+In tok:
+
+cobol1.tok is a copy of cob_str.tok.
+
+It appears under the new name in the Earley Table paper, and under the
+old names in ealier publications.

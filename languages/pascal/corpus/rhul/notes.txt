@@ -1,0 +1,7 @@
+In tok:
+
+pascal1.tok is a copy of treeview.tok
+pascal2.tok is a copy of view_ite.tok
+
+They appear under these new names in the Earley Table paper, and under their old names in earliar publications.
+
