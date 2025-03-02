@@ -136,8 +136,10 @@ class RunExp {
   }
 
   void execute(File log, String... command) throws IOException, InterruptedException {
+//  for (var c: command) System.out.print(c+ " ");
+//  System.out.println();
     ProcessBuilder pb = new ProcessBuilder(command); // Launch and wait for command process
-    pb.redirectErrorStream(true);
+   // pb.redirectErrorStream(true);
     pb.redirectOutput(Redirect.appendTo(log));
     Process p = pb.start();
     p.waitFor();

@@ -1,0 +1,384 @@
+program ::= topdec ';' program |
+            topdec ';' |
+            (* the next alternate comes from the rewrite rules*)
+            exp ';'  program |
+	    exp ';'
+
+(* lexical grammar rules *)
+
+WS ::= &SIMPLE_WHITESPACE | #
+
+scon  ::=  int | word | real | char | string
+
+tyvar ::= &SML_TYVAR (* is this right, includes '_ *) 
+
+vid ::=  iden | symbolP | '=' | '*'    (*  | '#'  *)
+
+funid ::= iden
+
+sigid ::= iden
+
+strid ::= iden
+
+tycon ::= iden | symbolP | '=' (* WS | '#' WS *) (* but excludes * *)
+
+lab ::= iden |  &SML_INT
+
+d ::= &SML_INT
+
+iden ::=  &SML_STRID
+
+(*
+symbol ::= `! | `% | `& | `$ | `# | `+ | `- | `/ | `: | `< | `= | `> | 
+      `? | `@ | `\\ | `~ | `` | `^ | `| | `* 
+*)
+
+symbolP ::= &SML_SYMID
+
+
+int ::= &SML_INT
+
+word ::= &SML_WORD
+
+real ::= &SML_REAL
+
+char ::= &SML_CHAR
+
+string ::= &SML_STRING
+
+(* phrase level grammar rules*)
+
+(* Milner uses rules for the long ids, and we have made these
+nonterminals *)  
+
+longvid ::= vid | strid '.' longvid
+
+longtycon ::= tycon | strid '.' longtycon
+
+longstrid ::= strid | strid '.' longstrid
+
+expComList2 ::= exp ',' exp | exp ',' expComList2
+expComList1 ::= exp | exp ',' expComList1
+expSemList2 ::= exp ';' exp | exp ';' expSemList2
+expSemList1 ::= exp | exp ';' expSemList1
+patComList2 ::= pat ',' pat | pat ',' patComList2
+patComList1 ::= pat | pat ',' patComList1
+tyStarList2 ::= ty '*' ty | ty '*' tyStarList2
+
+tyvarseq ::= tyvar | # | '(' tyvarList ')'
+tyvarList ::=  tyvar | tyvar ',' tyvarList
+
+tyseq ::= ty | # | '(' tyList ')'
+tyList ::=  ty | ty ',' tyList
+
+
+longstridPosC ::= longstrid | longstrid longstridPosC
+vidPosC ::= vid | vid vidPosC
+
+atpatPosC ::= atpat atpatPosC | atpat
+
+andTyvarseqTyconTyPosC ::= 
+            'and' tyvarseq tycon '=' ty andTyvarseqTyconTyPosC | 
+            'and' tyvarseq tycon '=' ty 
+
+sigidPosC ::= sigid | sigid sigidPosC 
+
+equalLongstridPosC ::= '=' longstrid equalLongstridPosC  | 
+                       '=' longstrid
+
+
+andTypeTyvarseqLTyconTyPosC ::= 
+         'and' 'type' tyvarseq longtycon '=' ty andTypeTyvarseqLTyconTyPosC | 
+         'and' 'type' tyvarseq longtycon '=' ty 
+
+
+longtyconList2 ::= longtycon '=' longtycon | 
+                   longtycon '=' longtyconList2
+
+
+atexp ::= scon |
+          'op' longvid  |
+          longvid  |
+          '{' exprow '}' |
+          '{' '}' |
+          '#' lab   |
+          '(' ')'  |
+          '(' expComList2 ')' |
+          '[' ']' |
+          '[' expComList1 ']' |
+          '(' expSemList2 ')' |
+          'let' dec 'in' expSemList1 'end'  |
+          '(' exp ')'
+
+exprow ::= lab '=' exp ',' exprow |
+           lab '=' exp         
+
+appexp ::= atexp |
+           appexp atexp 
+
+infexp ::= appexp |
+           infexp vid infexp
+
+exp ::= infexp |
+        exp ':' ty |
+        exp 'andalso' exp |
+        exp 'orelse' exp   |
+        exp 'handle' match  |
+        'raise' exp       |
+        'if' exp 'then' exp 'else' exp |
+        'while' exp 'do' exp          |
+        'case' exp 'of' match         |
+        'fn' match                    
+
+match ::= mrule '|' match | 
+          mrule
+
+mrule ::= pat '=>' exp
+
+dec ::= 'val' tyvarseq valbind    |
+        'fun' tyvarseq fvalbind   |
+        'type' typbind          |
+        'datatype' datbind 'withtype' typbind |
+        'datatype' datbind |
+        'datatype' tycon '=' 'datatype' longtycon |
+        'abstype' datbind 'withtype' typbind
+                               'with' dec 'end' |
+        'abstype' datbind 'with' dec 'end' |
+        'exception' exbind     |
+        'local' dec 'in' dec 'end' |
+        'open' longstridPosC   |
+        # |
+        dec ';' dec |
+        dec dec |
+        'infix' d vidPosC |
+        'infix' vidPosC |
+        'infixr' d vidPosC |
+        'infixr' vidPosC |
+        'nonfix' vidPosC      
+
+valbind ::= pat '=' exp 'and' valbind |
+            pat '=' exp |
+            'rec' valbind
+
+(* changed atpatPosC to remove rule with just atpat *)
+
+fvalbindList1 ::= 'op' vid atpatPosC ':' ty '=' exp  |
+              'op' vid atpatPosC ':' ty '=' exp  '|' fvalbindList1 |
+              vid atpatPosC ':' ty '=' exp  |
+              vid atpatPosC ':' ty  '=' exp  '|' fvalbindList1 |         
+              atpat vid atpat ':' ty '='  exp |
+              atpat vid atpat ':' ty '='  exp '|' fvalbindList1 |
+              '(' atpat vid atpat ')' atpatPosC ':' ty '='  exp |
+              '(' atpat vid atpat ')' atpatPosC ':' ty '='  exp '|' fvalbindList1 |
+              '(' atpat vid atpat ')' ':' ty '='  exp |
+              '(' atpat vid atpat ')' ':' ty '='  exp '|' fvalbindList1 |
+              'op' vid atpatPosC '=' exp  |
+              'op' vid atpatPosC '=' exp  '|' fvalbindList1 |
+              vid atpatPosC '=' exp  |
+              vid atpatPosC '=' exp  '|' fvalbindList1 |         
+              atpat vid atpat '='  exp |
+              atpat vid atpat '='  exp '|' fvalbindList1 |
+              '(' atpat vid atpat ')' atpatPosC '='  exp |
+              '(' atpat vid atpat ')' atpatPosC '='  exp '|' fvalbindList1 |
+              '(' atpat vid atpat ')' '='  exp |
+              '(' atpat vid atpat ')' '='  exp '|' fvalbindList1
+
+fvalbind ::= fvalbindList1 'and' fvalbind | fvalbindList1
+
+typbind ::= tyvarseq tycon '='  ty 'and' typbind |
+            tyvarseq tycon '='  ty
+
+datbind ::= tyvarseq tycon '='  conbind 'and' datbind | 
+            tyvarseq tycon '='  conbind
+
+conbind ::= 'op' vid 'of' ty '|' conbind | 
+            'op' vid '|' conbind | 
+             vid 'of' ty '|' conbind | 
+             vid '|' conbind | 
+            'op' vid 'of' ty | 
+            'op' vid | 
+             vid 'of' ty | 
+             vid  
+
+exbind ::= 'op' vid  'and' exbind | 
+           'op' vid 'of' ty  'and' exbind | 
+           'op' vid '='  'op' longvid  'and' exbind | 
+           'op' vid '='  longvid  'and' exbind | 
+           vid 'of' ty  'and' exbind | 
+           vid  'and' exbind | 
+           vid '='  'op' longvid  'and' exbind | 
+           vid '='  longvid  'and' exbind | 
+           'op' vid  |
+           'op' vid 'of' ty |
+           'op' vid '='  'op' longvid |
+           'op' vid '='  longvid |
+           vid 'of' ty  | 
+           vid | 
+           vid '='  'op' longvid | 
+           vid '='  longvid 
+
+atpat ::= '_' |
+          scon |
+          'op' longvid |
+          longvid |
+          '{' patrow '}' |
+          '{' '}' |
+          '(' ')'  |
+          '(' patComList2 ')' |
+          '[' ']'  |
+          '[' patComList1 ']'  |
+          '(' pat ')'
+
+
+patrow ::= '...'    |
+           lab '='  pat ',' patrow |
+           lab '='  pat |
+           vid ':' ty  'as' pat ',' patrow |
+           vid ':' ty  'as' pat |
+           vid ':' ty  ',' patrow |
+           vid ':' ty    |
+           vid 'as' pat ',' patrow |
+           vid 'as' pat |
+           vid ',' patrow |
+           vid   
+
+pat ::= atpat     |
+        'op' longvid atpat |
+        longvid atpat |
+        pat vid pat       |
+        pat ':' ty      |
+        'op' vid ':' ty  'as' pat | 
+        vid ':' ty  'as' pat |
+        'op' vid 'as' pat | 
+        vid 'as' pat
+
+ty ::= tyvar   |
+       '{' tyrow '}' |
+       '{' '}' |
+       tyseq longtycon |
+       tyStarList2  |
+       ty '->' ty |
+       '(' ty ')'
+
+tyrow ::= lab ':' ty ',' tyrow |
+          lab ':' ty 
+
+
+strexp ::= 'struct' strdec 'end' | 
+           longstrid               |
+           strexp ':' sigexp     |
+           strexp':>'sigexp   |
+           funid '(' strexp ')' |
+           'let' strdec 'in' strexp 'end' |
+           (* the next alternate comes from the rewrite rules*)
+           funid '(' strdec ')' 
+
+
+
+strdec ::= dec      |
+           'structure' strbind |
+           'local' strdec 'in' strdec 'end' |
+            #  |
+           strdec ';' strdec |
+           strdec strdec 
+
+strbind ::= strid '='  strexp 'and' strbind  |
+            strid '='  strexp  |
+            (* the next two alternates come from the rewrite rules*)
+            strid ':' sigexp '='  strexp 'and' strbind  |
+            strid ':>' sigexp '='  strexp 'and' strbind  |
+            strid ':' sigexp '='  strexp |
+            strid ':>' sigexp '='  strexp 
+
+
+sigexp ::= 'sig' spec 'end'  |
+           sigid              |
+  (* this alternate has been modified to add rewrite rule *)
+          sigexp 'where' 'type' tyvarseq longtycon '='  ty
+                                      andTypeTyvarseqLTyconTyPosC |
+          sigexp 'where' 'type' tyvarseq longtycon '='  ty
+
+sigdec ::= 'signature' sigbind
+
+sigbind ::= sigid '='  sigexp 'and' sigbind |
+            sigid '='  sigexp
+
+spec ::= 'val' valdesc   |
+         'type' typdesc   |
+         'eqtype' typdesc  |
+         'datatype' datdesc |
+         'datatype' tycon '='  'datatype' longtycon |
+         'exception' exdesc   |
+         'structure' strdesc   |
+         'include' sigexp       |
+         # |
+         spec ';' spec |
+         spec spec |
+         spec 'sharing'	 'type' longtyconList2 |
+  (* the next alternates come from the rewrite rules*)
+  (* changed 13/2/2025 to match what what probably the intent *)
+         'include' sigidPosC |
+         spec 'sharing' longstrid equalLongstridPosC |
+         spec 'sharing' longstrid |
+         'type' tyvarseq longtycon '=' ty  |
+	 'type' tyvarseq longtycon '=' ty andTOpLTPosC | 
+  (* these don't seem to be in the Definition but are needed for the corpus *)
+	 spec 'sharing' 'type' tyvarseq longtycon '=' ty  |
+	 spec 'sharing' 'type' tyvarseq longtycon '=' ty andTOpLTPosC
+	 
+
+andTOpLTPosC ::= 
+         'and' 'type' tyvarseq longtycon '=' ty andTOpLTPosC |
+	 'and' tyvarseq longtycon '=' ty andTOpLTPosC |
+	 'and' 'type' tyvarseq longtycon '=' ty |
+	 'and' tyvarseq longtycon '=' ty
+	 
+valdesc ::= vid ':' ty 'and' valdesc |  
+            vid ':' ty
+
+typdesc ::= tyvarseq tycon 'and' typdesc |
+            tyvarseq tycon
+
+datdesc ::= tyvarseq tycon '='  condesc 'and' datdesc | 
+            tyvarseq tycon '='  condesc
+
+condesc ::= vid 'of' ty '|' condesc |
+            vid '|' condesc |
+            vid 'of' ty |
+            vid 
+
+exdesc ::= vid 'of' ty 'and' exdesc | 
+           vid 'and' exdesc |
+           vid 'of' ty | 
+           vid 
+
+strdesc ::= strid ':' sigexp 'and' strdesc | 
+            strid ':' sigexp
+
+fundec ::= 'functor' funbind
+
+funbind ::= funid '(' strid ':' sigexp ')' '='  strexp  'and' funbind | 
+            funid '(' strid ':' sigexp ')' '='  strexp  | 
+            (* the next alternates come from the rewrite rules*)
+            funid '(' strid ':' sigexp ')' ':' sigexp '='  strexp 'and' funbind | 
+            funid '(' strid ':' sigexp ')' ':>' sigexp '='  strexp 'and' funbind |
+            funid '(' spec ')' ':' sigexp '='  strexp 'and' funbind |
+            funid '(' spec ')' '='  strexp 'and' funbind |
+            funid '(' spec ')' ':>' sigexp '='  strexp 'and' funbind |   
+            funid '(' strid ':' sigexp ')' ':' sigexp '='  strexp | 
+            funid '(' strid ':' sigexp ')' ':>' sigexp '='  strexp |
+            funid '(' spec ')' ':' sigexp '='  strexp |
+            funid '(' spec ')' '='  strexp |
+            funid '(' spec ')' ':>' sigexp '='  strexp   
+
+topdec ::= strdec topdec |
+           sigdec topdec |
+           fundec topdec |
+           strdec |
+           sigdec |
+           fundec   
+
+
+!paraterminal
+scon, lab, vid, tyvar, tycon, funid, sigid, 
+d, strid
