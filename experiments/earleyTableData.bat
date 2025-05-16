@@ -1,1 +1,1 @@
-java RunExp .. 30 earleyTableData
+java RunExp .. 100 earleyTableData
